@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog – ZT Épületgépészet | Tippek, tanácsok</title>
+<meta name="description" content="Épületgépészeti tippek, tanácsok Tihanics Zalántól. Klímaszerelés, fűtés, gáz, vízszerelés – mindent amit tudni kell.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f2f4f8;--bg2:#e8ecf3;--surface:#fff;
+  --blue:#1a5fa8;--blue-l:#2d7dd2;--red:#cc1f1f;
+  --text:#18243a;--muted:#5a6b82;
+  --border:rgba(26,95,168,0.14);--shadow:0 2px 20px rgba(26,60,120,0.08);
+  --fh:'Bebas Neue',sans-serif;--fb:'Outfit',sans-serif;
+}
+html{scroll-behavior:smooth;scroll-padding-top:104px;overflow-y:scroll}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);overflow-x:hidden;line-height:1.6}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,rgba(26,95,168,0.05) 1px,transparent 1px);background-size:28px 28px;pointer-events:none;z-index:0}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:104px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;background:rgba(242,244,248,0.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-logo img{height:88px;width:88px;object-fit:contain}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.83rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--blue);border-bottom:2px solid var(--blue);padding-bottom:2px}
+.nav-cta{background:var(--blue)!important;color:#fff!important;padding:.45rem 1.2rem;border-radius:4px;border-bottom:none!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
+.mob-menu{display:none;position:fixed;top:104px;left:0;right:0;z-index:99;background:rgba(242,244,248,0.98);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);flex-direction:column;padding:1.5rem 5%;gap:1rem}
+.mob-menu.open{display:flex}
+.mob-menu a{color:var(--text);text-decoration:none;font-size:1rem;font-weight:500;padding:.5rem 0;border-bottom:1px solid var(--border)}
+.mob-cta{background:var(--blue);color:#fff!important;text-align:center;padding:.75rem!important;border-radius:5px;border-bottom:none!important;font-weight:600}
+
+/* BUTTONS */
+.btn-p{display:inline-flex;align-items:center;gap:.5rem;background:var(--blue);color:#fff;text-decoration:none;padding:.75rem 1.6rem;font-family:var(--fb);font-size:.88rem;font-weight:600;border-radius:5px;border:none;cursor:pointer;transition:background .2s,transform .2s}
+.btn-p:hover{background:var(--blue-l);transform:translateY(-2px)}
+.btn-s{display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:var(--text);text-decoration:none;padding:.75rem 1.6rem;font-family:var(--fb);font-size:.88rem;font-weight:500;border:1.5px solid var(--border);border-radius:5px;cursor:pointer;transition:border-color .2s,background .2s}
+.btn-s:hover{border-color:var(--blue);background:rgba(26,95,168,.06)}
+
+.lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--blue);display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem}
+.lbl::before{content:'';width:22px;height:1.5px;background:var(--blue)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── BLOG LIST ── */
+#blog-list{display:block}
+#blog-article{display:none}
+
+/* PAGE HERO */
+.page-hero{position:relative;z-index:1;padding:130px 5% 70px;background:linear-gradient(135deg,var(--bg2),var(--bg));border-bottom:1px solid var(--border)}
+.page-hero::after{content:'';position:absolute;top:-80px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(45,125,210,0.1) 0%,transparent 70%);pointer-events:none}
+.page-hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.page-hero h1{font-family:var(--fh);font-size:clamp(3rem,6vw,5rem);letter-spacing:2px;line-height:.95;margin-bottom:1rem}
+.page-hero h1 span{color:var(--blue)}
+.page-hero p{color:var(--muted);font-size:1rem;max-width:520px;margin-bottom:2rem}
+
+/* FILTER */
+.filter-bar{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.filter-btn{background:var(--surface);border:1.5px solid var(--border);border-radius:20px;padding:.35rem 1rem;font-family:var(--fb);font-size:.78rem;font-weight:500;cursor:pointer;transition:all .2s;color:var(--text)}
+.filter-btn:hover,.filter-btn.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+/* FEATURED POST */
+.featured-post{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;margin-bottom:2.5rem;box-shadow:var(--shadow);cursor:pointer;transition:box-shadow .25s,transform .25s}
+.featured-post:hover{box-shadow:0 8px 32px rgba(26,60,120,.13);transform:translateY(-3px)}
+.fp-img{position:relative;overflow:hidden;min-height:320px}
+.fp-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.featured-post:hover .fp-img img{transform:scale(1.04)}
+.fp-img-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,95,168,.2),transparent)}
+.fp-badge{position:absolute;top:1rem;left:1rem;background:var(--red);color:#fff;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.28rem .75rem;border-radius:3px}
+.fp-body{padding:2.5rem;display:flex;flex-direction:column;justify-content:center}
+.fp-cat{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);font-weight:600;margin-bottom:.6rem}
+.fp-title{font-family:var(--fh);font-size:1.9rem;letter-spacing:1px;line-height:1.05;margin-bottom:.8rem}
+.fp-excerpt{color:var(--muted);font-size:.88rem;line-height:1.7;margin-bottom:1.4rem}
+.fp-meta{display:flex;align-items:center;gap:1rem;font-size:.72rem;color:var(--muted)}
+.fp-meta span{display:flex;align-items:center;gap:.3rem}
+
+/* BLOG GRID */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.blog-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:box-shadow .25s,transform .25s;display:flex;flex-direction:column}
+.blog-card:hover{box-shadow:0 8px 28px rgba(26,60,120,.12);transform:translateY(-3px)}
+.bc-img{position:relative;overflow:hidden;height:180px}
+.bc-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.blog-card:hover .bc-img img{transform:scale(1.05)}
+.cat-icon{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#fff;transition:transform .5s}
+.cat-icon svg{width:64px;height:64px;filter:drop-shadow(0 4px 14px rgba(0,0,0,.25))}
+.blog-card:hover .cat-icon{transform:scale(1.05)}
+.fp-img .cat-icon svg{width:120px;height:120px}
+.article-img{aspect-ratio:16/9;border-radius:12px;overflow:hidden;margin-bottom:2rem}
+.article-img .cat-icon svg{width:140px;height:140px}
+.bc-cat{position:absolute;bottom:.7rem;left:.7rem;background:var(--blue);color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.22rem .65rem;border-radius:3px}
+.bc-body{padding:1.3rem;flex:1;display:flex;flex-direction:column}
+.bc-title{font-family:var(--fh);font-size:1.2rem;letter-spacing:1px;line-height:1.1;margin-bottom:.5rem}
+.bc-excerpt{color:var(--muted);font-size:.82rem;line-height:1.6;flex:1;margin-bottom:1rem}
+.bc-meta{display:flex;align-items:center;justify-content:space-between;font-size:.7rem;color:var(--muted);border-top:1px solid var(--border);padding-top:.8rem;margin-top:auto}
+.bc-read{color:var(--blue);font-weight:600}
+
+/* ── ARTICLE VIEW ── */
+.article-wrap{max-width:820px;margin:0 auto;padding:120px 5% 6rem}
+.article-back{display:inline-flex;align-items:center;gap:.5rem;color:var(--blue);font-size:.82rem;font-weight:600;cursor:pointer;margin-bottom:2rem;text-decoration:none;background:none;border:none;font-family:var(--fb)}
+.article-back:hover{text-decoration:underline}
+.article-cat{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);font-weight:600;margin-bottom:.6rem}
+.article-title{font-family:var(--fh);font-size:clamp(2.2rem,5vw,3.5rem);letter-spacing:2px;line-height:1;margin-bottom:1rem}
+.article-meta{display:flex;align-items:center;gap:1.2rem;font-size:.78rem;color:var(--muted);margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.article-img{border-radius:10px;overflow:hidden;margin-bottom:2.5rem}
+.article-img img{width:100%;max-height:420px;object-fit:cover;display:block}
+.article-body h2{font-family:var(--fh);font-size:1.6rem;letter-spacing:1px;margin:2rem 0 .7rem}
+.article-body h3{font-size:1rem;font-weight:600;margin:1.4rem 0 .4rem;color:var(--text)}
+.article-body p{color:var(--muted);font-size:.93rem;line-height:1.8;margin-bottom:1rem}
+.article-body ul,.article-body ol{margin:.5rem 0 1rem 1.4rem;color:var(--muted);font-size:.92rem;line-height:1.75}
+.article-body li{margin-bottom:.3rem}
+.article-body strong{color:var(--text)}
+.article-callout{background:rgba(26,95,168,.07);border-left:4px solid var(--blue);border-radius:0 8px 8px 0;padding:1.1rem 1.4rem;margin:1.5rem 0;font-size:.9rem;color:var(--text)}
+.article-callout strong{color:var(--blue)}
+.article-cta{background:var(--blue);color:#fff;border-radius:10px;padding:2rem;margin-top:3rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.article-cta-text{font-family:var(--fh);font-size:1.5rem;letter-spacing:1px}
+.article-cta p{font-size:.85rem;opacity:.85;margin-top:.2rem;font-family:var(--fb)}
+
+/* FOOTER */
+footer{padding:2.5rem 5%;background:var(--bg2);border-top:1px solid var(--border);position:relative;z-index:1}
+.foot-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.foot-copy{font-size:.78rem;color:var(--muted)}
+.foot-links{display:flex;gap:1.5rem}
+.foot-links a{font-size:.78rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.foot-links a:hover{color:var(--text)}
+
+@media(max-width:900px){.featured-post{grid-template-columns:1fr}.fp-img{min-height:220px}.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.blog-grid{grid-template-columns:1fr}.article-wrap{padding:110px 5% 4rem}}
+</style>
+</head>
+<body>
+
+<div id="zt-loader"><img src="assets/image.png" alt="ZT"></div>
+<style>#zt-loader{position:fixed;inset:0;z-index:9999;background:#f2f4f8;display:flex;align-items:center;justify-content:center;transition:opacity .35s ease}#zt-loader img{width:140px;height:140px;animation:ztPulse 1.1s ease-in-out infinite}@keyframes ztPulse{0%,100%{opacity:.45;transform:scale(.95)}50%{opacity:1;transform:scale(1.05)}}#zt-loader.hide{opacity:0;pointer-events:none}</style>
+<script>window.addEventListener('load',function(){setTimeout(function(){document.getElementById('zt-loader').classList.add('hide')},250);setTimeout(function(){var l=document.getElementById('zt-loader');if(l)l.remove()},700)});</script>
+
+<nav>
+  <a href="ztepuletgepeszet-home%20(2).html" class="nav-logo">
+    <img src="assets/image.png" alt="ZT Épületgépészet">
+  </a>
+  <ul class="nav-links">
+    <li><a href="ztepuletgepeszet-home%20(2).html">Főoldal</a></li>
+    <li><a href="ztepuletgepeszet-szolgaltatasok%20(2).html">Szolgáltatások</a></li>
+    <li><a href="referencia.html">Referenciák</a></li>
+    <li><a href="#" class="active">Blog</a></li>
+    <li><a href="ztepuletgepeszet-home%20(2).html#contact" class="nav-cta">Ajánlatot kérek</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menü"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob-menu" id="mob-menu">
+  <a href="ztepuletgepeszet-home%20(2).html">Főoldal</a>
+  <a href="ztepuletgepeszet-szolgaltatasok%20(2).html">Szolgáltatások</a>
+  <a href="referencia.html">Referenciák</a>
+  <a href="#">Blog</a>
+  <a href="ztepuletgepeszet-home%20(2).html#contact" class="mob-cta">Ajánlatot kérek</a>
+</div>
+
+<!-- ═══════════════ BLOG LIST ═══════════════ -->
+<div id="blog-list">
+  <section class="page-hero">
+    <div class="page-hero-inner reveal">
+      <div class="lbl">Tudásbázis</div>
+      <h1>ÉPÜLETGÉPÉSZETI <span>BLOG</span></h1>
+      <p>Praktikus tippek, szakmai tanácsok fűtés, klíma, víz- és gázszerelés témakörökben – Tihanics Zalánt.</p>
+      <div class="filter-bar" id="filter-bar">
+        <button class="filter-btn active" onclick="filterPosts('mind')">Mind</button>
+        <button class="filter-btn" onclick="filterPosts('Klímaszerelés')">Klímaszerelés</button>
+        <button class="filter-btn" onclick="filterPosts('Fűtésszerelés')">Fűtésszerelés</button>
+        <button class="filter-btn" onclick="filterPosts('Gázszerelés')">Gázszerelés</button>
+        <button class="filter-btn" onclick="filterPosts('Vízszerelés')">Vízszerelés</button>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:5rem 5%;position:relative;z-index:1;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="featured-post reveal" onclick="openPost(0)" id="featured">
+        <div class="fp-img" id="fp-img-container">
+          <div class="fp-img-overlay"></div>
+          <div class="fp-badge">Kiemelt</div>
+        </div>
+        <div class="fp-body">
+          <div class="fp-cat">Klímaszerelés</div>
+          <div class="fp-title">Mennyi kerül egy klíma telepítése 2026-ban?</div>
+          <div class="fp-excerpt">Sokan kérdezik: mennyibe kerül egy klímarendszer telepítése? Az ár sok mindentől függ – a készülék típusától, teljesítményétől, az épület adottságaitól és a munkadíjtól. Ebben a cikkben mindent megtalál, amire szüksége van az árajánlat kéréséhez.</div>
+          <div class="fp-meta">
+            <span>📅 2026. január 12.</span>
+            <span>⏱ 8 perc olvasás</span>
+            <span>🏷 Klímaszerelés</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-grid reveal" id="blog-grid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════ ARTICLE VIEW ═══════════════ -->
+<div id="blog-article">
+  <div class="article-wrap">
+    <button class="article-back" onclick="closePost()">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Vissza a bloghoz
+    </button>
+    <div class="article-cat" id="a-cat"></div>
+    <h1 class="article-title" id="a-title"></h1>
+    <div class="article-meta" id="a-meta"></div>
+    <div class="article-img" id="a-img-container"></div>
+    <div class="article-body" id="a-body"></div>
+    <div class="article-cta">
+      <div><div class="article-cta-text">Kész dönteni?</div><p>Kérjen ingyenes helyszíni felmérést!</p></div>
+      <a href="ztepuletgepeszet-home%20(2).html#contact" class="btn-p" style="background:#fff;color:var(--blue);">Ajánlatot kérek →</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-copy">© 2026 ZT Épületgépészet – Minden jog fenntartva.</div>
+    <div class="foot-links"><a href="#">Adatvédelem</a><a href="#">ÁSZF</a><a href="#">Impresszum</a></div>
+  </div>
+</footer>
+
+<script>
+const ICONS = {
+  'Klímaszerelés': {svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M4.93 4.93l14.14 14.14M2 12h20M4.93 19.07L19.07 4.93M7 5l5 3 5-3M7 19l5-3 5 3M5 7l3 5-3 5M19 7l-3 5 3 5"/></svg>', grad:'linear-gradient(135deg,#a8d0f0 0%,#1a5fa8 100%)'},
+  'Fűtésszerelés': {svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"/></svg>', grad:'linear-gradient(135deg,#ffb88a 0%,#cc1f1f 100%)'},
+  'Gázszerelés': {svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3M12 3v2M21 12h-2M12 21v-2M3 12h2"/></svg>', grad:'linear-gradient(135deg,#7fb3e5 0%,#0d3a78 100%)'},
+  'Vízszerelés': {svg:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5c-3.5 5-7 8.5-7 12.5a7 7 0 0014 0c0-4-3.5-7.5-7-12.5z"/><path d="M9 14c0 1.5 1 3 3 3" opacity=".6"/></svg>', grad:'linear-gradient(135deg,#a8d8f0 0%,#1a5fa8 100%)'}
+};
+function iconBox(cat){const i=ICONS[cat]||ICONS['Klímaszerelés'];return `<div class="cat-icon" style="background:${i.grad};">${i.svg}</div>`;}
+
+const POSTS = [
+  {
+    cat:'Klímaszerelés', date:'2026. január 12.', read:'9 perc',
+    title:'Klímaszerelés Kecskeméten – hogyan működik egy split rendszer?',
+    excerpt:'Klímaszerelés Kecskeméten és környékén: a split klíma működése, kiválasztása, telepítése – minden, amit a vásárlás előtt érdemes megérteni.',
+    body:`
+      <p>Klímaszerelés Kecskeméten, Lajosmizsén, Kiskunfélegyházán, Kiskőrösön és környékén – ha valaki első klímakészülékét tervezi vagy a régit cseréli, érdemes megérteni, hogyan is működik valójában ez a rendszer. Aki tudja a mögöttes folyamatokat, sokkal jobb döntéseket hoz – kapacitásban, márkában, telepítési módban egyaránt.</p>
+
+      <h2>A SPLIT KLÍMA MŰKÖDÉSI ELVE</h2>
+      <p>A klíma valójában <strong>nem hűt vagy fűt – csak átszállítja a hőt egyik helyről a másikra</strong>. Hűtéskor a beltéri térből veszi ki a hőenergiát és a kültéri egységen keresztül engedi a szabadba. Fűtéskor pedig fordítva: a kültéri levegőből nyer ki hőt, és a beltéri térbe juttatja.</p>
+      <p>Ez a folyamat egy <strong>zárt hűtőközeg-körön</strong> keresztül történik. A hűtőközeg (általában R32 vagy R454B) folyamatosan halmazállapotot vált a rendszerben: a kompresszorban összesűrítjük, ezáltal felmelegszik; az egyik hőcserélőben leadja a hőt és cseppfolyósodik; egy expanziós szelepen átengedve hirtelen lehűl és elpárolog; majd a másik hőcserélőben felveszi a környezeti hőt. Ez a Carnot-ciklus a klíma lelke.</p>
+
+      <h2>A FŐ ALKATRÉSZEK</h2>
+      <ul>
+        <li><strong>Kompresszor</strong> – a kültéri egységben található, a hűtőközeget sűríti. Ez a klíma "szíve", és ez a leghangosabb alkatrész is.</li>
+        <li><strong>Hőcserélők</strong> – két darab van: egy a beltéri, egy a kültéri egységben. Vékony alumínium lamellákból állnak, hogy minél nagyobb felületen érintkezzen a hűtőközeg a levegővel.</li>
+        <li><strong>Expanziós szelep</strong> – itt csökken a hűtőközeg nyomása, ami lehűti.</li>
+        <li><strong>Ventilátorok</strong> – mindkét egységben vannak, a levegőt mozgatják a hőcserélőkön át.</li>
+        <li><strong>Inverter</strong> – a modern készülékek lelke, a kompresszort folyamatosan szabályozza, nem csak be-ki kapcsolja.</li>
+      </ul>
+
+      <h2>MIÉRT ANNYIRA FONTOS AZ INVERTER?</h2>
+      <p>A régi, <strong>nem-inverteres készülékek</strong> ki-be kapcsolva tartották a hőmérsékletet: amikor túl hideg lett, kikapcsoltak, amikor felmelegedett, újra teljes teljesítményen indultak. Ez a hideg-meleg ciklus rendkívül energiapazarló volt, és a hőmérséklet is ingadozott.</p>
+      <p>Az <strong>inverteres klíma</strong> a kompresszor fordulatszámát folyamatosan szabályozza – épp annyi energiát fordít a hűtésre/fűtésre, amennyi a kívánt hőmérséklet tartásához szükséges. Ezzel akár <strong>30-40%-os energiamegtakarítás</strong> érhető el, és a hőmérséklet is sokkal stabilabb. Egy inverteres készülék hosszú távon mindig olcsóbb – még akkor is, ha a beszerzési ára magasabb.</p>
+
+      <div class="article-callout"><strong>SEER és SCOP – mi a kettő különbsége?</strong> A <strong>SEER (Seasonal Energy Efficiency Ratio)</strong> a hűtési hatékonyság szezonális mutatója, a <strong>SCOP (Seasonal Coefficient of Performance)</strong> pedig a fűtési. Minél magasabb mindkettő, annál takarékosabb a készülék. Egy A+++ klíma 7,0 SEER és 4,5 SCOP felett van – ez a 2026-os ajánlott szint.</div>
+
+      <h2>HOGYAN VÁLASSZUNK KAPACITÁST?</h2>
+      <p>A klíma teljesítményét <strong>kilowattban (kW)</strong> mérjük – ez az óránként leadott vagy felvett hőenergia mennyisége. A megfelelő méret kiválasztása kritikus: alulméretezett klíma sosem éri el a kívánt hőmérsékletet, túlméretezett pedig fölöslegesen kapcsolgat és hamar tönkremegy.</p>
+      <p>Általános szabály: <strong>egy átlagos szigetelésű, 2,7 méter belmagasságú szobához 100 W/m² teljesítmény szükséges</strong>. Tehát:</p>
+      <ul>
+        <li>10-15 m² (kis háló, dolgozószoba): 2,5 kW</li>
+        <li>18-25 m² (közepes nappali, háló): 3,5 kW</li>
+        <li>30-40 m² (nagy nappali): 5,0 kW</li>
+        <li>40-55 m² (nagy nyitott tér): 7,0 kW</li>
+      </ul>
+      <p>De ez csak kiindulópont! A pontos méretezésnél figyelembe vesszük a tájolást, az ablakok típusát és méretét, a szigetelés állapotát, a benne tartózkodó emberek és a hőtermelő készülékek (TV, számítógép) számát. Ezért nálam <strong>helyszíni felmérés mindig megelőzi az árajánlatot</strong> Kecskeméten és környékén.</p>
+
+      <h2>A TELEPÍTÉS FOLYAMATA</h2>
+      <p>Egy átlagos lakásklíma felszerelése <strong>4-6 órás</strong> munka. A főbb lépések:</p>
+      <ol>
+        <li><strong>Helyszíni felmérés</strong>: hová kerül a beltéri és a kültéri egység, milyen útvonalon vezetjük a csöveket.</li>
+        <li><strong>Falfúrás</strong>: a csövezetnek 50-65 mm átmérőjű lyuk kell – ezt lézeres mérővel pontosan helyeztetjük el.</li>
+        <li><strong>Konzol és tartó felszerelés</strong>: a beltéri egység tartója a falra, a kültérié általában külső konzolra kerül.</li>
+        <li><strong>Csövezet és kábelezés</strong>: rézcsövek (hűtőközegnek), elektromos vezeték, kondenzcső.</li>
+        <li><strong>Vákuumozás</strong>: ez NAGYON fontos! A csőrendszerből minden levegőt és nedvességet kiszívunk – e nélkül a rendszer pár év alatt tönkremegy.</li>
+        <li><strong>Beüzemelés és próbaüzem</strong>: nyomás-ellenőrzés, hűtőközeg töltés, távirányító beállítása, kötelező hideg- és melegüzemi próba.</li>
+      </ol>
+
+      <h2>MIRE FIGYELJEN A SZAKEMBER KIVÁLASZTÁSÁNÁL?</h2>
+      <p>Klímatelepítéshez Magyarországon <strong>kötelező az F-gáz végzettség</strong> – ez az EU-s előírás szerint a fluortartalmú hűtőközegek kezelésére jogosít. Aki nem rendelkezik vele, az nem szerelhet klímát legálisan.</p>
+      <p>Kecskeméten és a környező településeken (Lajosmizse, Nagykőrös, Kerekegyháza, Tiszakécske, Kiskunfélegyháza, Kiskőrös) <strong>helyi szakemberként 30 km-es körzetben ingyenes a kiszállás</strong>. Ez nem csak árban előny: gond esetén órákon belül kint vagyok, nem napokat kell várni egy budapesti cégre.</p>
+
+      <p><strong>Kérjen tőlem ingyenes, kötelezettségmentes helyszíni felmérést!</strong> Beszéljük át a házát, a szokásait, és pontosan az Ön igényeire szabott javaslatot kap – semmilyen "alaptípus" csomagba nem nyomom be.</p>
+    `
+  },
+  {
+    cat:'Fűtésszerelés', date:'2026. január 28.', read:'11 perc',
+    title:'Hőszivattyú vagy gázkazán Kecskeméten? Megértés-alapú döntés',
+    excerpt:'Hőszivattyús fűtés vs kondenzációs gázkazán Kecskeméten – hogyan működik mindkettő, és mikor melyik a jobb választás 2026-ban.',
+    body:`
+      <p>Új építkezésnél vagy nagyfelújításnál Kecskeméten, Lajosmizsén, Kiskunfélegyházán szinte mindenki ezzel a dilemmával szembesül: <strong>hőszivattyú vagy gázkazán?</strong> A két technológia teljesen másképp működik, és nincs egységes válasz – mindig az adott ház és életmód dönti el, melyik az ideális. Ebben a cikkben részletesen elmagyarázom mindkettő működését, hogy Ön is tudjon ítélni.</p>
+
+      <h2>A KONDENZÁCIÓS GÁZKAZÁN MŰKÖDÉSE</h2>
+      <p>A hagyományos gázkazánok <strong>csak az égés érzékelhető hőjét hasznosították</strong> – a vízgőz formájában távozó hőveszteség (a "rejtett hő") elveszett az égéstermék-elvezetőn keresztül. A kondenzációs technológia pont ezt a rejtett hőt nyeri vissza.</p>
+      <p>A folyamat: a gáz az égőtérben elég, a forró füstgázok átáramlanak a hőcserélőn, és átadják az energiát a fűtővíznek. <strong>A kulcs:</strong> a füstgáz tovább megy egy második (vagy ugyanannak a hőcserélőnek a hidegebb részén át) hőcserélő szakaszon, ahol a vízgőz lecsapódik – tehát kondenzálódik. A kondenzációval keletkező hőt szintén a fűtővíz veszi fel. Ezért hívják <strong>kondenzációs</strong> kazánnak.</p>
+      <p>Az eredmény: <strong>hatásfok elérheti a 98-109%-ot</strong> a fűtővízhez képest (az "alsó fűtőértékhez" viszonyítva még magasabb is lehet). Ez 25-30%-os megtakarítás a régi atmoszférikus kazánokhoz képest.</p>
+
+      <h2>MIRE OPTIMALIZÁLT A KONDENZÁCIÓS KAZÁN?</h2>
+      <p>Fontos: a kondenzáció csak akkor működik, ha a <strong>visszatérő fűtővíz hőmérséklete 55°C alatt van</strong>. E fölött a vízgőz nem kondenzálódik, és a kazán "csak" 90% körüli hatásfokkal megy. Ezért érdemes:</p>
+      <ul>
+        <li>Padlófűtés vagy alacsony hőmérsékletű radiátor mellett használni</li>
+        <li>Megfelelő méretű radiátorokat választani (nagyobb felület = alacsonyabb előremenő szükséges)</li>
+        <li>Kültéri hőmérséklet-érzékelős vezérlést alkalmazni</li>
+      </ul>
+
+      <h2>A HŐSZIVATTYÚ MŰKÖDÉSI ELVE</h2>
+      <p>A hőszivattyú nem tüzel semmit – <strong>a környezetben (levegő, talaj, víz) lévő hőenergiát koncentrálja</strong> és emeli magasabb hőmérsékletre. Pontosan ugyanaz az elv, mint a klímáé hűtéskor, csak fordítva.</p>
+      <p>A levegő-víz hőszivattyú legelterjedtebb típus Magyarországon. Még <strong>-20°C-os kültéri hőmérsékletnél is van energia a levegőben</strong> (az abszolút nulla -273°C, tehát -20°C-on még közel 87% energia rendelkezésre áll a klímában). Ezt a hőt a hűtőközeg felveszi, a kompresszor magasabb hőmérsékletre emeli, és átadja a fűtési rendszer vizének.</p>
+
+      <h2>A COP ÉRTÉK – AMI MINDENT ELDÖNT</h2>
+      <p>A hőszivattyú hatékonyságát a <strong>COP (Coefficient of Performance)</strong> mutató méri. Ez azt mondja meg, hogy 1 kWh elektromos energiából hány kWh hőt állít elő a készülék.</p>
+      <ul>
+        <li><strong>COP = 3</strong>: 1 kWh árammal 3 kWh hőt termel (jó)</li>
+        <li><strong>COP = 4</strong>: kiváló, modern készülékek</li>
+        <li><strong>COP = 5+</strong>: prémium, ideális körülmények között</li>
+      </ul>
+      <p>A COP <strong>függ a kültéri hőmérséklettől</strong>: -10°C-nál egy hőszivattyú COP-ja 2,0-2,5 körül van, +7°C-on viszont 4,0-5,0. Ezért fontos a <strong>szezonális SCOP érték</strong> nézni – ez az egész fűtési szezon átlagát adja meg.</p>
+
+      <h2>MIKOR MELYIK A JOBB?</h2>
+
+      <h3>Gázkazán mellett szól</h3>
+      <ul>
+        <li>Ha már van bevezetett gáz a házban</li>
+        <li>Régi, kevésbé szigetelt ház magas hőszükséglettel</li>
+        <li>Magas előremenő hőmérsékletű radiátoros rendszer</li>
+        <li>Korlátozott kezdeti költségvetés</li>
+        <li>Gyors melegítés szükséges (pl. üdülő, ritkán használt ház)</li>
+      </ul>
+
+      <h3>Hőszivattyú mellett szól</h3>
+      <ul>
+        <li>Új építés vagy jól szigetelt ház (alacsony hőszükséglet)</li>
+        <li>Padlófűtés van (alacsony előremenőhöz ideális)</li>
+        <li>Van vagy lesz napelem (ekkor a fűtés gyakorlatilag ingyenes)</li>
+        <li>Klimatizálni is szeretne (a legtöbb hőszivattyú hűteni is tud)</li>
+        <li>Hosszú távra tervez (15-20 év)</li>
+        <li>Nem szeretne tüzet és gázat a házban (biztonság, kéménymentesség)</li>
+      </ul>
+
+      <div class="article-callout"><strong>Hibrid rendszer:</strong> Sok kecskeméti és Bács-Kiskun megyei ügyfelemnek azt javaslom, hogy <strong>mindkettő legyen</strong>. A hőszivattyú megy normál hőmérsékleten (ez 80-90% az időnek), és mínusz alatt a gázkazán segít be. Így mindig a legolcsóbb módon termelődik a hő, és az élettartam is hosszabb.</div>
+
+      <h2>A NAPELEM SZEREPE</h2>
+      <p>Napelemmel kombinálva a hőszivattyú lényegében <strong>ingyenes fűtéssé</strong> válik – napos napokon a megtermelt áramot a hőszivattyú fogyasztja, és a felesleget a hálózatba tápláljuk vissza. Egy átlagos kecskeméti családi háznál 6-8 kWp napelem + hőszivattyú kombináció <strong>évi 80-90%-os fűtési-hűtési-melegvíz energia-önellátást</strong> ad.</p>
+
+      <h2>HOGYAN DÖNTSE EL?</h2>
+      <p>Az egyetlen helyes módszer: <strong>helyszíni felmérés és hőszükséglet-számítás</strong>. Megnézzük az épület szigetelését, a meglévő fűtési rendszert, a tájolást, és pontos számokkal mutatom meg, hogy melyik megoldás térül meg gyorsabban és melyik üzemeltetése olcsóbb. Kecskeméten és környékén ez ingyenes szolgáltatásom.</p>
+      <p><strong>Hívjon, és beszéljük át a házát!</strong> Egy alapos felmérés nélkül senki sem tud Önnek felelős javaslatot adni.</p>
+    `
+  },
+  {
+    cat:'Fűtésszerelés', date:'2026. február 5.', read:'9 perc',
+    title:'Padlófűtés Kecskeméten – hogyan működik és miért érdemes?',
+    excerpt:'Padlófűtés Kecskeméten, Lajosmizsén, Nagykőrösön – a működési elv, előnyök, hátrányok, kivitelezési tippek helyi szakembertől.',
+    body:`
+      <p>A padlófűtés egy évszázados technológia – a római termák már használták. Ma viszont a modern változatok teljesen mások: <strong>alacsony hőmérsékletű, vezérelt rendszerek</strong>, amelyek tökéletes párosítást adnak a kondenzációs kazánoknak és hőszivattyúknak. Kecskeméten és környékén (Kerekegyháza, Lajosmizse, Tiszakécske, Nagykőrös) szinte minden új építésű családi házba ezt szerelem.</p>
+
+      <h2>HOGYAN MŰKÖDIK?</h2>
+      <p>A padló alá – jellemzően a betonaljzat alá – <strong>hőszigetelt rétegre lefektetett csőrendszert</strong> helyezünk. Ezekben a csövekben folyamatosan kering a meleg víz, általában <strong>30-40°C-os előremenő hőmérséklettel</strong> (összehasonlításul: a radiátoros rendszerek 50-70°C-on járnak).</p>
+      <p>A meleg víz a csöveken áthaladva felmelegíti a betont, amely <strong>hatalmas hőtároló tömegként</strong> működik. A beton lassan, egyenletesen sugározza ki a hőt a helyiségbe. A teljes padló válik fűtőfelületté.</p>
+
+      <h2>MIÉRT MŰKÖDIK ILYEN JÓL?</h2>
+      <p>Három fizikai elv miatt:</p>
+      <ol>
+        <li><strong>Hősugárzás</strong>: a meleg padló infravörös sugárzással adja le a hőt, ez érzetre kellemesebb, mint a radiátor által keltett konvekciós levegőáramlás.</li>
+        <li><strong>Egyenletes eloszlás</strong>: a hőmérséklet a padlón 22-25°C, fej magasságában 19-20°C – pont ellentéte a természetes "meleg fej, hideg láb" érzésnek.</li>
+        <li><strong>Nagy felület = alacsony hőmérséklet</strong>: 25 m² padló adott hőmennyiséget 25°C-on ad le, míg egy 1 m² radiátor ugyanezt 60°C-on. Ez óriási előny.</li>
+      </ol>
+
+      <h2>AZ ALACSONY ELŐREMENŐ HŐMÉRSÉKLET ELŐNYE</h2>
+      <p>Itt jön a lényeg: minél alacsonyabb a fűtési rendszer hőmérséklete, annál <strong>hatékonyabb a hőtermelő (kazán vagy hőszivattyú)</strong>:</p>
+      <ul>
+        <li>Kondenzációs kazán 30°C visszatérő mellett 105-109%-os hatásfokon megy (a kondenzáció maximum). 60°C-on csak 88-92%-on.</li>
+        <li>Hőszivattyú 35°C előremenőre COP 4,5-5,0-et tud. 50°C-on viszont csak COP 3,0-3,2-et.</li>
+      </ul>
+      <p>Ezért a padlófűtés <strong>10-25%-kal csökkenti a fűtési költségeket</strong> még akkor is, ha a radiátorral pontosan ugyanazt a hőmérsékletet adja.</p>
+
+      <h2>A KIVITELEZÉS LÉPÉSEI</h2>
+      <ol>
+        <li><strong>Tervezés</strong>: hőszükséglet-számítás helyiségenként, a körök hossza, csőosztása, hőmérséklet meghatározása.</li>
+        <li><strong>Alapfelület előkészítés</strong>: nedvszigetelés, alapszigetelés.</li>
+        <li><strong>Padlófűtés hőszigetelés</strong>: 5-10 cm vastag (általában EPS vagy XPS) – nélküle a hő lefelé szökne.</li>
+        <li><strong>Élszigetelő szegély</strong>: a falak mentén – megakadályozza a hőhidat és a tágulási problémákat.</li>
+        <li><strong>Csövek lefektetése</strong>: spirál (csigás) vagy kígyózó alakzat – a használat dönti el, melyik.</li>
+        <li><strong>Osztó-gyűjtő bekötése</strong>: a csövek itt csatlakoznak a fűtési rendszerre, helyiségenként szabályozhatóan.</li>
+        <li><strong>Nyomáspróba</strong>: 3-5 bar nyomáson 24 órás teszt – ELŐTTE betonozni nem szabad!</li>
+        <li><strong>Beton réteg</strong>: 5-7 cm hidegfolyós aljzat a csövekre.</li>
+        <li><strong>Padlóburkolat</strong>: csempe, parketta vagy laminált – mindegyik használható, de a csempe a legjobb hővezető.</li>
+        <li><strong>Felfűtési protokoll</strong>: nem szabad rögtön maximumra kapcsolni! Egy 7-10 napos fokozatos hőemelés szükséges a beton tartós állapotához.</li>
+      </ol>
+
+      <div class="article-callout"><strong>Fontos:</strong> a padlófűtést <strong>betonozás előtt kell lefektetni</strong>. Utólag csak az úgynevezett szárazépítésű, vékony rendszer (10-15 mm) jön szóba, ami sokkal drágább és kevésbé hatékony. Ezért érdemes új építésnél időben szakembert hívni Kecskeméten.</div>
+
+      <h2>SZABÁLYOZÁS – AHOL A LEGTÖBBET LEHET ELRONTANI</h2>
+      <p>A padlófűtés <strong>lassan reagál</strong>: 4-8 óra is lehet, mire egy hőmérséklet-változás érezhetővé válik. Ezért a hagyományos "nappal melegebb, este hűvösebb" termosztát-program rosszul működik – mire reagálna, már új helyzet van.</p>
+      <p>Ehelyett:</p>
+      <ul>
+        <li><strong>Állandó hőmérséklet-tartás</strong> a használt időszakban (pl. 22°C nappal-este, 20°C éjszaka)</li>
+        <li><strong>Kültéri hőmérséklet-érzékelős vezérlés</strong>: az időjárás függvényében automatikusan állítja a fűtővíz hőmérsékletét</li>
+        <li><strong>Helyiségenkénti termosztatikus szabályozás</strong> osztó-gyűjtőn keresztül</li>
+      </ul>
+
+      <h2>MIRE FIGYELJEN BÚTORVÁLASZTÁSNÁL?</h2>
+      <p>Padlófűtésnél <strong>nem szabad szőnyeggel teljesen letakarni</strong> nagy felületet – a szigetelés megakadályozza a hőleadást, és a padló helyileg túlmelegszik. A bútorok lábasak legyenek, ne fenékre tegyen szekrényt. Parketta? Igen, de speciálisan padlófűtésre alkalmas típusból.</p>
+
+      <p>Tervez új építkezést Kecskeméten, Lajosmizsén vagy a környéken? <strong>Ingyenes tervezést és helyszíni szemlét</strong> kínálok – beszéljük át, hogy az Ön házához mi az ideális megoldás.</p>
+    `
+  },
+  {
+    cat:'Vízszerelés', date:'2026. február 18.', read:'8 perc',
+    title:'Csőtörés Kecskeméten – miért történik és hogyan előzhető meg?',
+    excerpt:'Csőtörés Kecskeméten és környékén: az okok megértése, megelőzési stratégia, és mit tegyen, ha mégis bekövetkezik.',
+    body:`
+      <p>Egy csőtörés egyike a legrosszabb élményeknek egy ingatlanban – órák alatt komoly anyagi kárt okozhat, és gyakran <strong>napokig tartó kiszáradás és helyreállítás</strong> követi. Kecskeméten és a környéken (Lajosmizse, Kiskunfélegyháza, Kiskőrös, Nagykőrös) évente több tucat ilyen esethez riasztanak. De miért történik? És hogyan kerülhető el?</p>
+
+      <h2>A CSŐTÖRÉSEK FŐ OKAI</h2>
+
+      <h3>1. Fagyás (a leggyakoribb)</h3>
+      <p>A víz fagyáskor <strong>9%-os térfogatnövekedéssel jár</strong> – ez óriási nyomást fejt ki a csőfalra. Ha a víz nem tud kitágulni (zárt csőszakasz), a cső szétreped vagy az illesztések szakadnak ki. Kecskeméten a téli -10 és -15°C közötti napokon különösen veszélyes a helyzet.</p>
+      <p>Különösen érintett helyek:</p>
+      <ul>
+        <li>Kültéri csapok, locsolóhálózat</li>
+        <li>Pince, padlás, fűtetlen helyiségek</li>
+        <li>Külső fal mentén futó vezetékek</li>
+        <li>Üdülők, ritkán használt ingatlanok</li>
+      </ul>
+
+      <h3>2. Korrozió és anyagfáradás</h3>
+      <p>A régi <strong>acél- és horganyzott csövek</strong> 30-50 év után belülről rozsdásodnak, kívülről pedig kondenzvíz vagy talajnedvesség hatására. Az ólomcsövek (1960-as évek előtti építések) különösen problémásak – nemcsak egészségileg, hanem mechanikailag is.</p>
+      <p>A korróziós csőtörés jellemzője: nem hirtelen, hanem fokozatosan alakul ki. Először apró szivárgás, aztán egyre nagyobb folt, végül átlyukad. <strong>Ha pókhálószerű foltot lát a falon</strong>, lehet, hogy már szivárog mögötte valami.</p>
+
+      <h3>3. Túlnyomás</h3>
+      <p>A kecskeméti vízhálózat nyomása helyenként 4-7 bar között ingadozik. Egy jó házi rendszer <strong>3-4 bar nyomáson</strong> üzemel. Ha nincs nyomáscsökkentő szelep, a magas nyomás folyamatosan terheli a csöveket és különösen az illesztéseket, csaptelep-tömítéseket. Az eredmény: 5-10 év alatt fáradásos törés.</p>
+
+      <h3>4. Mechanikai sérülés</h3>
+      <p>Falba ágyazott cső megfúrása (kép-, polcfelszerelésnél), építkezés közbeni mozgás, vagy talajba rakott cső felrágása nehézgépekkel.</p>
+
+      <h2>HOGYAN ELŐZHETŐ MEG?</h2>
+
+      <h3>Téli felkészülés (október-november)</h3>
+      <ul>
+        <li><strong>Kültéri csapok víztelenítése</strong>: zárja el a belső szárot, nyissa ki a kültérit, csavarja le a tömlőt.</li>
+        <li><strong>Locsolóhálózat lefúvatása</strong>: kompresszorral kifújni a maradék vizet.</li>
+        <li><strong>Hőszigetelés</strong>: a fűtetlen tereken futó csövekre szigetelő gyűrű (3-5 mm-es polietilén szivacs).</li>
+        <li><strong>Üdülőknél fagyásmentes víztelenítés</strong>: teljes rendszer kiürítése.</li>
+      </ul>
+
+      <h3>Nyomásvédelem</h3>
+      <p>Telepítsen <strong>nyomáscsökkentő szelepet</strong> a vízórát követő szakaszra. A beállítás 3-4 bar – ez optimális a háztartási berendezésekhez.</p>
+
+      <h3>Rendszeres ellenőrzés</h3>
+      <p>Évente egyszer érdemes körbenézni a csaptelepek, WC-tartályok, mosógép-csatlakozók körül – egy kis nedvesség hetek alatt lassú szivárgássá nőhet. <strong>Egy 30 perces ellenőrzés sokszor 200-300 ezer forintnyi kárt előz meg</strong>.</p>
+
+      <div class="article-callout"><strong>Modern megoldás:</strong> léteznek <strong>okos vízmonitor rendszerek</strong>, amelyek a fő ágra szerelve folyamatosan figyelik a fogyasztást. Ha rendellenes vízelhasználást észlelnek (pl. éjszaka csordogál), riasztást küldenek a telefonra, és automatikusan elzárják a vizet. Egy ilyen rendszer 5-10 év alatt többszörösen megtérülhet.</div>
+
+      <h2>HA MÉGIS BEKÖVETKEZIK – AZ ELSŐ 10 PERC</h2>
+      <ol>
+        <li><strong>Zárja el a főelzárót!</strong> A vízóra mellett vagy a kertkapuban van. Mindenki tudja, hol van? Mert ha nem, most a legjobb idő megnézni.</li>
+        <li><strong>Áramtalanítson</strong> a vizes helyiségekben – a víz és az áram kombinációja életveszélyes.</li>
+        <li><strong>Próbálja meg csökkenteni a kárt</strong> – itasson fel, szellőztessen, mozgassa el az értékes tárgyakat.</li>
+        <li><strong>Fényképezze le</strong> a sérülést és a kárt – a biztosításhoz kelleni fog.</li>
+        <li><strong>Hívjon szakembert</strong> – ne próbálja maga megjavítani, ha nem tudja pontosan, mit csinál.</li>
+      </ol>
+
+      <h2>A SZIVÁRGÁS-LOKALIZÁLÁS</h2>
+      <p>Sokszor csak egy nedves folt látható – a tényleges törés sokkal beljebb van. Ilyenkor használjuk:</p>
+      <ul>
+        <li><strong>Akusztikus szivárgáskeresőt</strong> (a víz hangját erősíti fel)</li>
+        <li><strong>Termokamerát</strong> (a hőmérséklet-különbséget mutatja)</li>
+        <li><strong>Nyomáspróbát</strong> szakaszosan</li>
+      </ul>
+      <p>Egy precíz lokalizálással elkerülhető a felesleges falfeltörés.</p>
+
+      <p>Csőtörés gyanúja Kecskeméten vagy a környéken? <strong>Gyors kiszállás 30 km-es körzetben.</strong> Hívjon, jövök!</p>
+    `
+  },
+  {
+    cat:'Gázszerelés', date:'2026. március 3.', read:'7 perc',
+    title:'Gázszerelés Kecskeméten – miért nem mindegy, ki dolgozik a házán',
+    excerpt:'Gázszerelés Kecskeméten csak engedéllyel – mit kell tudni a folyamatról, az engedélyekről, a dokumentációról és a biztonságról.',
+    body:`
+      <p>A gázszerelés Magyarországon <strong>szigorúan szabályozott tevékenység</strong> – nem véletlenül. Egy szabálytalanul bekötött készülék <strong>életveszélyes</strong>: szivárgó gáz robbanást, hibás égéstermék-elvezetés szénmonoxid-mérgezést okozhat. Kecskeméten, Lajosmizsén, Kiskunfélegyházán és Bács-Kiskun megyében sokat látok olyan házakat, ahol a korábbi munkák kifejezetten kockázatosak.</p>
+
+      <h2>MIÉRT ENGEDÉLYKÖTELES A GÁZSZERELÉS?</h2>
+      <p>A földgáz nem csak gyúlékony – <strong>nehezebb a levegőnél</strong>, ezért szivárgás esetén a padló közelében gyűlik fel, ahol nehéz észrevenni. A robbanási koncentráció 5-15% gáz a levegőben – ezt egy átlagos szobában néhány perc alatt elérheti egy közepes szivárgás. Egy elektromos szikra ekkor katasztrófát okoz.</p>
+      <p>Az égéstermék (szénmonoxid) <strong>színtelen, szagtalan, halálos</strong>. Egy rossz kéménycsatlakozás vagy törött hőcserélő miatt a házba szivároghat – sokszor csak akkor derül ki, amikor már baj van.</p>
+      <p>Ezért minden gázvezeték-csere, készülékcsere, áthelyezés <strong>tervezést, engedélyt, nyomáspróbát és hatósági átvételt</strong> igényel. Ez nem bürokrácia, hanem életvédelem.</p>
+
+      <h2>MILYEN VÉGZETTSÉG SZÜKSÉGES A SZAKEMBERHEZ?</h2>
+      <ul>
+        <li><strong>Műszaki biztonsági szabályzat (MBSZ) szerinti gázszerelői jogosultság</strong> – ez egy állami minősítésű szakmai engedély, rendszeres megújítással.</li>
+        <li><strong>Aktuális szakmai kamara tagság</strong> – nem mindenki, aki tanulta a szakmát, jogosult ténylegesen dolgozni.</li>
+        <li><strong>Felelősségbiztosítás</strong> – minimum 10 millió Ft fedezet ajánlott.</li>
+        <li><strong>Tervezői jogosultság</strong> – új gázvezeték vagy nagyobb átalakítás esetén szükséges.</li>
+      </ul>
+      <p>MINDEN ügyfél kérje el ezeket írásban a munkakezdés előtt. Egy tisztességes szakember készségesen bemutatja.</p>
+
+      <h2>A GÁZSZERELÉS FOLYAMATA – MIT KELL TARTALMAZNIA?</h2>
+
+      <h3>1. Helyszíni felmérés</h3>
+      <p>A meglévő rendszer állapotának felmérése, a beépíteni kívánt készülék helyének meghatározása, az égéstermék-elvezetés ellenőrzése, esetleges hatósági korlátok feltárása.</p>
+
+      <h3>2. Tervezés és engedélyeztetés</h3>
+      <p>Új vezeték vagy nagyobb átalakítás esetén tervet kell készíteni, és a hatósággal jóváhagyatni. Egyszerű készülékcsere esetén csak bejelentési kötelezettség van.</p>
+
+      <h3>3. Kivitelezés</h3>
+      <p>A munka során minden anyag <strong>megfelelőségi tanúsítvánnyal</strong> rendelkezzen. Ne fogadjon el "vegyes" csöveket, "ismerős kollégától" hozott szelepeket – ezek nemcsak garanciális, hanem biztonsági problémát jelentenek.</p>
+
+      <h3>4. Nyomáspróba</h3>
+      <p>A teljes rendszert <strong>légtömör állapotban kell ellenőrizni</strong>. A próba szigorú előírás szerint:</p>
+      <ul>
+        <li>Levegővel 150-300 mbar nyomáson</li>
+        <li>Minimum 10-30 perc megfigyelési idő (vezeték-szakasztól függően)</li>
+        <li>Nyomáscsökkenés nem lehet, csak a hőmérséklet-változás miatti</li>
+        <li>Jegyzőkönyv készítése – ez a tömörségi nyilatkozat alapja</li>
+      </ul>
+
+      <h3>5. Beüzemelés és átadás</h3>
+      <p>Új gázkészülék első beüzemelése <strong>kizárólag gyári képviselet vagy felhatalmazott szerelő</strong> végezheti – ez a gyári garancia feltétele! Az átadáskor minden dokumentumot meg kell kapnia.</p>
+
+      <h2>MILYEN DOKUMENTUMOKAT KAP A MUNKA UTÁN?</h2>
+      <ul>
+        <li>Tételes munkalap (mit, mennyiért csináltunk)</li>
+        <li>Tömörségi nyilatkozat (a nyomáspróba eredménye)</li>
+        <li>Beüzemelési jegyzőkönyv (gyári vagy hivatalos)</li>
+        <li>Garanciajegy a készülékre és a munkára</li>
+        <li>Kéményseprői igazolás (új égéstermék-elvezetésnél kötelező)</li>
+        <li>Számla a teljes munkáról és anyagokról</li>
+      </ul>
+
+      <div class="article-callout"><strong>Vörös zászlók – AZONNAL küldje el a "szakembert":</strong>
+      <ul>
+        <li>Csak készpénzt fogad el, nem ad számlát</li>
+        <li>Rendkívül alacsony ár ("majd a szomszédoknak is csinálunk olcsóbban")</li>
+        <li>Nem mutatja a végzettségét, kamarai tagságát</li>
+        <li>"Majd később hozok papírt" – soha nem hozza</li>
+        <li>Nem hajlandó nyomáspróbára</li>
+        <li>Olyan készüléket javasol, amit "ő szerez be" papír nélkül</li>
+      </ul>
+      A 100 ezer forint megtakarítás nem ér meg egy életveszélyes házat.</div>
+
+      <h2>HA RÉGI GÁZRENDSZERT ÖRÖKÖLT</h2>
+      <p>Új ingatlanvásárlás után érdemes <strong>szakemberrel átnézetni</strong> a gázvezetéket. Egy alapos vizsgálat sokszor kiderít rejtett problémákat – pl. korrodált csöveket, nem megfelelő elhelyezést, hiányzó szelepeket. Ezek mind életveszélyesek, és semmilyen biztosítás nem fizet, ha baj történik.</p>
+
+      <p>Kecskeméten, Lajosmizsén, Tiszakécskén vagy a környéken tervez gázszerelést? <strong>Engedéllyel, garanciával, teljes dokumentációval dolgozom.</strong> Hívjon ingyenes felmérésért – beszéljük át, mire van valójában szüksége.</p>
+    `
+  },
+  {
+    cat:'Klímaszerelés', date:'2026. március 17.', read:'7 perc',
+    title:'Klíma karbantartás Kecskeméten – mi történik benne és miért fontos',
+    excerpt:'Évi klíma karbantartás Kecskeméten – a folyamatok érthető magyarázata, és miért érdemes nem kihagyni.',
+    body:`
+      <p>A klímakészülékre <strong>karbantartás nélkül 2-3 év alatt 25-30%-os teljesítmény-csökkenés</strong> várható, és <strong>3-5 évvel rövidebb élettartam</strong>. Mégis sokan azt hiszik, a klíma "karbantartásmentes". Kecskeméten és környékén (Lajosmizse, Kiskunfélegyháza, Nagykőrös) szezononként több tucat olyan karbantartást végzek, ahol évek óta nem nyúlt hozzá senki – és a különbség drámai.</p>
+
+      <h2>MIÉRT VAN SZÜKSÉG ÉVES KARBANTARTÁSRA?</h2>
+      <p>A klíma <strong>folyamatosan szívja a levegőt</strong> a hőcserélőkön keresztül – egy átlagos lakásklíma napi 8-10 órás hűtéssel kb. 100-150 m³ levegőt mozgat meg. Ez a levegő tele van porral, pollennel, állatszőrrel, baktériumokkal. Az idő múlásával ezek lerakódnak:</p>
+      <ul>
+        <li>A beltéri szűrőn (durva szűrés)</li>
+        <li>A beltéri hőcserélő finom lamelláin (eldugulnak, csökken a hőátadás)</li>
+        <li>A ventilátor lapátjain (egyensúly elromlik, zaj nő)</li>
+        <li>A csepptálcán és csepegtető vezetékben (gomba- és penésztenyészet)</li>
+        <li>A kültéri egységen (rovar, levél, por, akár madárfészek)</li>
+      </ul>
+
+      <h2>EGY ALAPOS KARBANTARTÁS LÉPÉSEI</h2>
+
+      <h3>Beltéri egység</h3>
+      <ol>
+        <li><strong>Szűrőtisztítás vagy csere</strong>: a durva szűrőket simán le lehet mosni langyos szappanos vízben, a finom (HEPA) szűrőket cserélni kell.</li>
+        <li><strong>Hőcserélő mélytisztítás</strong>: ez a fontos rész! Speciális habosító tisztítószert juttatok a lamellák közé, amely feloldja a lerakódást. Ezután átöblítjük tiszta vízzel.</li>
+        <li><strong>Ventilátor tisztítás</strong>: a "henger" alakú beltéri ventilátor lapáljai közé évek alatt mély por és gomba kerül. Ezt kefés és/vagy ultrahangos módszerrel tisztítom.</li>
+        <li><strong>Csepptálca és csepegtető vezeték átöblítés</strong>: a kondenzvíz lefolyórendszer gyakran eltömődik – ez beltéri csepegéshez, falfoltokhoz vezet.</li>
+        <li><strong>Antibakteriális kezelés</strong>: UV lámpa vagy ozmotikus permet – megöli a baktériumokat és gombát.</li>
+      </ol>
+
+      <h3>Kültéri egység</h3>
+      <ol>
+        <li><strong>Burkolat levétele</strong>, vizuális szemle</li>
+        <li><strong>Hőcserélő tisztítás</strong>: nagynyomású vízzel kívülről befelé fújva (befelé fújva pont rontana). Levelek, por, rovar eltávolítása.</li>
+        <li><strong>Ventilátor lapátok ellenőrzése</strong>: ha repedt vagy görbült, cserélni kell.</li>
+        <li><strong>Csavarok, rögzítések</strong>: a sok rezgés miatt évek alatt meglazulhatnak.</li>
+        <li><strong>Csőcsatlakozások</strong>: olajos folt = hűtőközeg-szivárgás. Azonnal javítani kell.</li>
+      </ol>
+
+      <h3>Rendszer ellenőrzés</h3>
+      <ol>
+        <li><strong>Hűtőközeg nyomás mérése</strong>: a megfelelő tartományban kell lennie. Ha alacsonyabb, lassú szivárgás van valahol.</li>
+        <li><strong>Elektromos csatlakozások</strong>: korrodált vagy meglazult vezetékek tűzveszélyesek.</li>
+        <li><strong>Üzemi tesztelés</strong>: hűtés/fűtés mód kipróbálása, hőmérséklet-mérés a befúvott levegőnél.</li>
+      </ol>
+
+      <div class="article-callout"><strong>Tudta?</strong> Egy elszennyezett klíma <strong>15-25%-kal több áramot fogyaszt</strong> ugyanazért a hűtésért. Egy évi karbantartás többszörösen megtérül csak a megtakarított áramban – nem beszélve a hosszabb élettartamról és az egészségesebb levegőről.</div>
+
+      <h2>EGÉSZSÉG-HATÁSOK</h2>
+      <p>Egy elhanyagolt klíma a légúti megbetegedések egyik gyakori forrása:</p>
+      <ul>
+        <li><strong>Légiós kór</strong>: a vízálló helyeken (csepptálca, párologtató) tenyésző baktériumok kifújódhatnak a befújt levegőbe.</li>
+        <li><strong>Allergén szóródás</strong>: pollen, atka, gombaspóra felgyűlik a szűrőn, majd visszakerül a térbe.</li>
+        <li><strong>Penészszag</strong>: ha rossz a szag bekapcsoláskor, akkor már komoly probléma van bent.</li>
+      </ul>
+
+      <h2>MIKOR ÉRDEMES IDŐPONTOT FOGLALNI?</h2>
+      <p>Ideális:</p>
+      <ul>
+        <li><strong>Tavasszal</strong> (március-április) – a hűtési szezon előtt</li>
+        <li><strong>Ősszel</strong> (szeptember-október) – a fűtési szezon előtt (hőszivattyús módra)</li>
+      </ul>
+      <p>Sokan a hőség közepén veszik észre, hogy nem hűt rendesen a klíma – ekkor viszont sürgős, drágább és nincs azonnal időpont. A megelőzés mindig olcsóbb.</p>
+
+      <h2>MIT TEHET ÖN MAGA?</h2>
+      <ul>
+        <li><strong>Havonta szűrő tisztítás</strong>: kivenni, kicsit lemosni, megszáradni hagyni, visszahelyezni.</li>
+        <li><strong>Kültéri rovarháló</strong>: ha közel van bokor vagy fák, érdemes védőhálót feltenni.</li>
+        <li><strong>Évente egyszer szakember</strong>: a mélytisztítás és technikai ellenőrzés nem amatőr munka.</li>
+      </ul>
+
+      <p>Foglaljon karbantartási időpontot! Kecskeméten, Lajosmizsén, Tiszakécskén, Kiskőrösön és a környező településeken <strong>ingyenes a kiszállás</strong>.</p>
+    `
+  },
+  {
+    cat:'Vízszerelés', date:'2026. március 28.', read:'9 perc',
+    title:'Fürdőszoba felújítás Kecskeméten – a vízszerelési oldal',
+    excerpt:'Fürdőszoba felújítás Kecskeméten – mit kell tudni a csőhálózatról, lefolyórendszerről, hidroszigetelésről, hogy ne kelljen 5 év múlva újra kezdeni.',
+    body:`
+      <p>Egy fürdőszoba felújítás látszólag egyszerű – kibontjuk a régit, felrakunk újat. A valóságban viszont <strong>több szakma találkozása</strong>: vízszerelés, villanyszerelés, hidroszigetelés, burkolás, festés. A vízszerelési rész pedig az, amit utólag a legdrágábban lehet javítani – ha rosszul készül el, fal lebontásával jár az újrakezdés. Kecskeméten és környékén évi sok fürdőszoba felújítást követek végig az elejétől.</p>
+
+      <h2>MIKOR ÉRDEMES TELJES FELÚJÍTÁSRA SZÁNNI MAGÁT?</h2>
+      <p>Egy fürdőszoba átlagos élettartama 15-25 év. Cserére érdemes, ha:</p>
+      <ul>
+        <li>A csempék vagy a fugák sérültek, repedt, a víz alá kerülhet</li>
+        <li>A szanyiterek elavult működésűek (öblítés, csaptelep, lefolyó)</li>
+        <li>A csőhálózat horganyzott acél vagy ólom (eredetileg 50+ éves épületekben)</li>
+        <li>A hidroszigetelés meghibásodott (vízfoltok az alatta lévő lakásban/szobában)</li>
+        <li>A funkció már nem felel meg az igényeknek (zuhanyfülke kellene kád helyett, mosógép-tárolás stb.)</li>
+      </ul>
+
+      <h2>A FELÚJÍTÁS HELYES SORRENDJE</h2>
+      <p>Egy 4-6 m²-es kecskeméti fürdőszoba felújítása <strong>5-10 nap</strong> alatt megvan – feltéve, hogy minden lépés helyes sorrendben történik. Ha bármit kihagyunk vagy összekeverünk, az visszaköszön.</p>
+
+      <h3>1. Bontás (1-2 nap)</h3>
+      <p>A régi csempe, padló, szaniter eltávolítása. Itt derül ki a "valódi" helyzet – sokszor olyat találunk, ami a tervezésnél nem volt látható (rossz cső, penészes szerkezet, hiányos szigetelés).</p>
+
+      <h3>2. Csőhálózat csere (1-2 nap)</h3>
+      <p>A teljes víz- és lefolyórendszer ekkor kerül cserére. Ez a legfontosabb pont! <strong>Soha ne akarjon spórolni a csőhálózaton</strong> – ha gyenge anyagot teszünk be vagy hagyjuk a régit, 5-10 év múlva fal lebontással kell javítani.</p>
+      <ul>
+        <li><strong>Hidegvíz és melegvíz vezeték</strong>: réz (prémium), többrétegű PEX-Al-PEX (jó középút), vagy PP-R (műanyag, olcsóbb). Mindhárom jó, ha jól szerelik.</li>
+        <li><strong>Lefolyó (szennyvíz)</strong>: HT vagy KG csövek, megfelelő esésszöggel (2-3%).</li>
+        <li><strong>Elzáró szelepek</strong>: minden szanyiter előtt külön zárószelep – hiba esetén nem kell a fő elzárót zárni.</li>
+        <li><strong>Visszacsapó szelepek</strong>: a WC tartály után, mosógép csatlakozónál stb.</li>
+      </ul>
+
+      <h3>3. Villanyszerelés (1 nap)</h3>
+      <p>LED-világítás, csempés szellőző ventillátor, ipari mosógép-csatlakozó. A fürdőben szigorú elektromos szabályok vannak (érintésvédelmi zónák) – nem lehet "akárhova" konnektort tenni.</p>
+
+      <h3>4. Aljzat egyengetés (1 nap)</h3>
+      <p>A padló sík, megfelelő esésszöggel a padlóösszefolyó felé (1-2%).</p>
+
+      <h3>5. Hidroszigetelés (1 nap)</h3>
+      <p>Ez a fürdőszoba legfontosabb védelmi rétege! Speciális, vízálló réteget (folyékony fólia vagy bitumenes lemez) viszünk fel a teljes padlóra és a falak alsó 30-40 cm-ére, valamint a zuhany teljes magasságába (180-200 cm). <strong>A sarkok, sarokrágók és cső-átvezetések különös figyelmet igényelnek</strong> – ezeken a pontokon szivárog leggyakrabban.</p>
+
+      <div class="article-callout"><strong>FIGYELEM:</strong> sok kivitelező ezt a lépést <strong>spórolásból kihagyja</strong>. A csempe önmagában NEM vízszigetelő – a fuga áteresztő, a csempe alatt a víz tovább jut. Hidroszigetelés nélkül 5-7 év alatt biztos szivárgás lesz, és tönkremegy az alatta lévő szerkezet vagy lakás. Soha ne fogadja el a "csempe alatti hidroszigetelés? Az nem kell, jó lesz az úgy is" választ.</div>
+
+      <h3>6. Csempézés (2-4 nap)</h3>
+      <p>Aljzat (padló) burkolása, falburkolat. Speciális csemperagasztó és fugázó, csempeszélek tömítése (különösen a zuhany sarkainál szilikonnal).</p>
+
+      <h3>7. Szanyiter beépítés (1-2 nap)</h3>
+      <p>WC, mosdó, zuhanytálca/kád, esetleg bidé. Pontos bekötés, vízszintbe állítás, tömítések ellenőrzése.</p>
+
+      <h3>8. Csaptelepek és kiegészítők (fél nap)</h3>
+      <p>Csaptelepek, zuhanyrózsa, törölközőtartó stb.</p>
+
+      <h3>9. Próbaüzem és átadás (fél nap)</h3>
+      <p>Minden szanyiter és csap ellenőrzése, esetleges szivárgások javítása, dokumentált átadás.</p>
+
+      <h2>A LEGGYAKORIBB HIBÁK</h2>
+      <p>Kecskeméti felújítások során sokszor látom ezeket:</p>
+      <ul>
+        <li><strong>Rossz lefolyó-esésszög</strong>: 1% alatt rosszul folyik el, dugulásra hajlamos.</li>
+        <li><strong>Hiányzó vagy rosszul kivitelezett hidroszigetelés</strong> – ahogy említettem.</li>
+        <li><strong>Túl kicsi csőméret</strong> a mosógépnek vagy a kádnak – lassan folyik le, hangos.</li>
+        <li><strong>Szellőzés hiánya a WC-tartálynak</strong>: szippantó hangokat ad fel.</li>
+        <li><strong>Páraelszívó hiánya vagy rossz teljesítménye</strong>: penészedés indul.</li>
+        <li><strong>Csempe a régi vakolat tetejére</strong> (lopott munka): pár év és lehullik.</li>
+      </ul>
+
+      <h2>HIDEG ÉS MELEG VÍZRŐL</h2>
+      <p>Modernebb fürdőszobákban érdemes elgondolkodni:</p>
+      <ul>
+        <li><strong>Cirkulációs HMV-vezeték</strong>: a meleg víz folyamatosan kering a rendszerben, így a csap megnyitásakor azonnal melegen jön (nem kell 10-15 másodpercig folyatni)</li>
+        <li><strong>Központi vízlágyító</strong>: Kecskeméten elengedhetetlen, mert kemény a víz</li>
+        <li><strong>WC-takarékos öblítés</strong>: 2-3 literes változat, sokat takarít</li>
+        <li><strong>Termosztátos zuhanycsaptelep</strong>: állandó hőmérséklet, kényelem és biztonság</li>
+      </ul>
+
+      <p>Tervez fürdőszoba felújítást Kecskeméten, Lajosmizsén, Kiskunfélegyházán vagy a környéken? <strong>Ingyenes helyszíni felmérés, részletes ütemterv, tiszta munka.</strong> Hívjon és beszéljük át!</p>
+    `
+  },
+  {
+    cat:'Fűtésszerelés', date:'2026. április 8.', read:'7 perc',
+    title:'Radiátor csere Kecskeméten – mit kell tudni a tényleges fűtéshatékonyságról',
+    excerpt:'Radiátor csere Kecskeméten és környékén – a radiátorok típusai, működése, a beszabályozás fontossága és a leggyakoribb hibák.',
+    body:`
+      <p>Egy régi radiátor látszólag még működik – ad valamilyen hőt. A valóságban viszont egy <strong>20-30 éves lemezes radiátor 15-25%-kal rosszabb hatásfokkal</strong> dolgozik a belső lerakódások és a megváltozott vízminőség miatt. Kecskeméten, Lajosmizsén, Nagykőrösön sok családi házban még a 80-90-es évekből származó radiátorok teljesítenek alulinformált tulajdonosok mellett – pedig csere után a fűtésszámla 10-15%-kal csökkenhet.</p>
+
+      <h2>HOGYAN MŰKÖDIK EGY RADIÁTOR?</h2>
+      <p>A radiátor egyszerű hőcserélő: a kazán/hőszivattyú által felmelegített víz <strong>áthalad rajta, és a falon keresztül hőt ad le</strong> a környező levegőnek. A hő két módon terjed:</p>
+      <ul>
+        <li><strong>Konvekció</strong>: a radiátor melegíti a mellette lévő levegőt, ami felemelkedik – a szoba természetesen átkeveredik. Ez a legnagyobb arány.</li>
+        <li><strong>Sugárzás</strong>: infravörös hősugárzás a felszínről közvetlenül a környezetbe.</li>
+      </ul>
+      <p>A hatékonyság függ:</p>
+      <ul>
+        <li>A radiátor <strong>felületétől</strong> (több bordázat = több felület)</li>
+        <li>A <strong>belső áramlástól</strong> (a vízsebesség és az osztás)</li>
+        <li>A <strong>belső víztérfogattól</strong> (nagyobb térfogat lassabban reagál)</li>
+        <li>A <strong>külső környezettől</strong> (függöny mögött 30%-kal kevesebb a hőleadás!)</li>
+      </ul>
+
+      <h2>RADIÁTOR TÍPUSOK – MIRE VALÓ A KÜLÖNBSÉG?</h2>
+
+      <h3>Lapradiátor (lemezes panel)</h3>
+      <p>A legelterjedtebb. Két vékony acéllemezből áll, közöttük függőleges csatornákkal. A típus jelölése: <strong>10, 11, 21, 22, 33</strong> – az első szám a lemezek száma, a második a bordázott felületek (konvektorok) száma.</p>
+      <ul>
+        <li>10-es típus: 1 lemez, nincs konvektor – legkisebb hőleadás</li>
+        <li>22-es típus: 2 lemez, 2 konvektor – legelterjedtebb, jó középút</li>
+        <li>33-as típus: 3 lemez, 3 konvektor – a legjobb hőleadás (de vastagabb)</li>
+      </ul>
+      <p><strong>Előnye:</strong> olcsó, hatékony, modern. <strong>Hátránya:</strong> belül porlódik a víz, nehezebb tisztítani.</p>
+
+      <h3>Tagozott radiátor</h3>
+      <p>Hagyományos megjelenésű, az egyes tagok cserélhetők, kombinálhatók. Anyaga lehet öntöttvas (tradicionális), alumínium (modern), bimetál (kombinált).</p>
+      <ul>
+        <li><strong>Alumínium</strong>: gyors hőleadás, jó hatásfok, drága.</li>
+        <li><strong>Öntöttvas</strong>: lassú felfűtés, hosszú leadás, kiváló hőtárolás – ritkán fűtött helyiségekhez ideális.</li>
+        <li><strong>Bimetál</strong>: acéltest, alumínium bordázat – nagy nyomásnak ellenáll.</li>
+      </ul>
+
+      <h3>Csőradiátor (törölközőszárító)</h3>
+      <p>Fürdőszobába tervezett, vízszintes csövekkel. Praktikus, mert dupla funkciót lát el. Csak megfelelő méretezéssel adja le a szoba fűtéséhez szükséges hőt – sok lakásban túl kicsi, és nem fűt rendesen.</p>
+
+      <h3>Designradiátor</h3>
+      <p>Esztétikai megoldások: függőleges paneles, üveg, kőminta, stb. Drága, de modern lakásban értelmes választás.</p>
+
+      <h2>MIKOR ÉRDEMES CSERÉLNI?</h2>
+      <p>Konkrét jelek a cserére:</p>
+      <ul>
+        <li><strong>Szivárgás</strong>: bárhol, bármilyen kicsi.</li>
+        <li><strong>Rozsdásodás</strong>: külsőleg már látszik = belül súlyosabb.</li>
+        <li><strong>Egyenetlen hőeloszlás</strong> a radiátoron: alja meleg, teteje hideg = lerakódás, légbuborék.</li>
+        <li><strong>Hideg szoba</strong>: bizonyos szobák sosem érik el a kívánt hőmérsékletet.</li>
+        <li><strong>Kazáncsere</strong>: ha kondenzációs kazánra váltunk, érdemes egyszerre a radiátorokat is áttekinteni (alacsonyabb hőmérsékletre megfelelő méretezés).</li>
+        <li><strong>Hőszivattyú telepítés</strong>: itt mindenképp ellenőrzés szükséges – sokszor cserélni kell.</li>
+      </ul>
+
+      <h2>A LEGFONTOSABB: A BESZABÁLYOZÁS</h2>
+      <p>Itt jön a sok kivitelező által kihagyott rész. Új radiátorok bekötése után <strong>kötelező a hidraulikai beszabályozás</strong>. Mit jelent ez?</p>
+      <p>A fűtési rendszer egy elágazó vezetékhálózat, ahol a víz a legkisebb ellenállás felé folyik. Beszabályozás nélkül:</p>
+      <ul>
+        <li>A kazánhoz közelebbi radiátorokon több víz folyik át (túlmelegszenek)</li>
+        <li>A távolabbi radiátorokon kevés (hideg szobák)</li>
+        <li>A kazán/szivattyú feleslegesen pörög, hangos, drága</li>
+      </ul>
+      <p>A beszabályozás során <strong>minden radiátor előtti szabályozó szelepet beállítunk</strong> úgy, hogy a vízátfolyás az adott radiátor méretéhez igazodjon. Egy 6 radiátoros családi háznál ez 1-2 órás precíziós munka – de utána egyenletes a hőeloszlás és optimális a fűtési költség.</p>
+
+      <div class="article-callout"><strong>Helyi tapasztalat:</strong> Kecskeméti ügyfeleim szinte 100%-ánál azt látom, hogy a régi rendszerben sosem volt beszabályozás – ezért szenvedtek hideg vagy meleg szobákkal. Egy alapos cserénél és beszabályozásnál a komfort drasztikusan javul, anélkül hogy a kazán cserélni kellene.</div>
+
+      <h2>TERMOSZTATIKUS SZELEPEK</h2>
+      <p>A radiátoron lévő "csavargatható" gombokon szabályozzuk a hőmérsékletet. Ez egy érzékelő, ami a szoba levegőjének hőmérsékletét érzékeli, és <strong>automatikusan csökkenti a vízáramot</strong>, ha a szoba elérte a kívánt hőmérsékletet. Megtakarítást ad: a nem használt szobákban alacsonyabb hőmérséklet, a használtakban pontos kontroll.</p>
+      <p>Modern változat a <strong>vezeték nélküli, okos termosztát</strong>: telefonról vezérelhető, programozható időjárás-érzékenységgel, geofencinggel (hazaérkezéskor automatikusan felfűt).</p>
+
+      <h2>MENNYI IDŐ ALATT KÉSZÜL EL?</h2>
+      <p>Egy átlagos 6-8 radiátoros családi ház teljes cseréje (régi le, új fel, beszabályozás, próbaüzem) <strong>2-3 nap</strong>. Egy radiátor cseréje kb. 2-3 óra.</p>
+
+      <p>Régi radiátorok cseréjét tervezi Kecskeméten, Lajosmizsén, Kiskunfélegyházán? <strong>Ingyenes felmérés, beszabályozással együtt.</strong> Hívjon!</p>
+    `
+  },
+  {
+    cat:'Klímaszerelés', date:'2026. április 21.', read:'6 perc',
+    title:'Multi-split klíma Kecskeméten – egy kültéri, több beltéri',
+    excerpt:'Multi-split rendszer Kecskeméten – hogyan működik, mikor érdemes választani, mit kell tudni a tervezésénél és kivitelezésénél.',
+    body:`
+      <p>Ha több helyiséget szeretne klimatizálni Kecskeméten, Lajosmizsén vagy a környéken, akkor két lehetőség közül választhat: <strong>külön-külön split klímák</strong> minden szobába, vagy egy <strong>multi-split rendszer</strong> egy kültéri egységgel. A kettő nem ugyanaz – más a működési elv, más a tervezés, és más a hosszú távú gazdaságosság.</p>
+
+      <h2>HOGYAN MŰKÖDIK A MULTI-SPLIT?</h2>
+      <p>Egy multi-split rendszerben <strong>egyetlen kültéri egység szolgálja ki több (általában 2-5) beltéri egységet</strong>. A kültéri egységből a hűtőközeg <strong>külön csővezetékeken</strong> jut el minden beltéri egységhez, és minden beltéri egységnek saját expanziós szelepe, hőcserélője és ventilátora van.</p>
+      <p>A vezérlés intelligens: a kültéri egységben lévő inverteres kompresszor folyamatosan szabályozza a teljesítményt aszerint, hogy hány és milyen beltéri egység dolgozik éppen. Ha csak egy szoba kell hűteni, a kompresszor visszább vesz; ha mind az 5 megy, felgyorsul.</p>
+
+      <h2>AZ ELŐNYÖK</h2>
+
+      <h3>Esztétika</h3>
+      <p>1 kültéri egység helyett 4-5 = jelentősen tisztább homlokzat. Kecskeméten és környékén egyre több családi háznál ez fő szempont, főleg ha új építésnél a homlokzati megjelenés fontos.</p>
+
+      <h3>Kevesebb fal-átfúrás</h3>
+      <p>Külön klímákhoz külön kül-bel csatornák kellenek (4-5 falfúrás). Multi-splitnél a csövek egy kötegben futnak, sokszor egy közös csatornán át.</p>
+
+      <h3>Hatékonyabb működés</h3>
+      <p>Ha csak 1-2 szoba kell hűteni, a multi-split kültéri egysége <strong>kisebb terheléssel jár</strong>, jobb COP-val. Külön klímáknál minden egységnek megvan a maga minimális indítási fogyasztása.</p>
+
+      <h3>Központi vezérlés lehetősége</h3>
+      <p>Sok rendszerben egy központi panelről vagy applikációból az összes beltéri egység vezérelhető. Időprogramok, "ne hűts erre a szobára", egyedi hőmérséklet-beállítás stb.</p>
+
+      <h2>A HÁTRÁNYOK</h2>
+
+      <h3>Egyetlen pont-meghibásodás kockázat</h3>
+      <p>Ha a kültéri egység tönkremegy, az összes beltéri egység leáll. Külön klímáknál csak az egyik mondja fel a szolgálatot, a többi működik.</p>
+
+      <h3>Kötöttebb tervezés</h3>
+      <p>A csővezetékek hosszának, magasság-különbségeknek korlátai vannak (általában max. 30-50 m teljes csőhossz a kültéritől, max. 15-25 m emelési különbség). Ezek miatt a tervezés komplexebb.</p>
+
+      <h3>Hűtés és fűtés egyszerre?</h3>
+      <p>A legtöbb multi-split rendszer <strong>vagy mindenhol hűt, vagy mindenhol fűt</strong>. Ha egy helyiségben hűtés, egy másikban fűtés kellene egyidejűleg (pl. tavasszal a déli oldalon napsütés, az északin még hideg), arra speciális <strong>3-csöves rendszer</strong> kell.</p>
+
+      <h3>Magasabb kezdeti költség</h3>
+      <p>Egy multi-split komplett rendszere drágább, mint például két különálló split klíma. Azonban hosszú távon kiegyenlítődik a megtakarítás és az élettartam.</p>
+
+      <h2>MIKOR ÉRDEMES MULTI-SPLITET VÁLASZTANI?</h2>
+      <p>Egyértelműen ideális, ha:</p>
+      <ul>
+        <li>3 vagy több szobába kell klíma</li>
+        <li>Esztétikailag számít a homlokzati megjelenés</li>
+        <li>Új építés vagy nagyobb felújítás zajlik (a csöveket falba húzni)</li>
+        <li>A szobák egymáshoz közel vannak (egy emelet, egy szárny)</li>
+        <li>Központi vezérlésre van igény</li>
+      </ul>
+
+      <p>Nem ideális, ha:</p>
+      <ul>
+        <li>Csak 1-2 szobába kell klíma</li>
+        <li>A helyiségek nagyon távol vannak (különböző emelet, ellentétes oldalon)</li>
+        <li>Egyszerre fűtésre és hűtésre van szükség különböző helyiségekben</li>
+      </ul>
+
+      <h2>A TERVEZÉS LÉPÉSEI</h2>
+      <ol>
+        <li><strong>Hőterhelés-számítás</strong> helyiségenként (tájolás, méret, ablakok)</li>
+        <li><strong>Beltéri egységek típusának</strong> kiválasztása (fali, kazettás, csatornás)</li>
+        <li><strong>Kültéri egység méretének</strong> meghatározása – ne a beltériek teljes névleges kapacitása szerint! A multi-split kültéri egységei általában 60-80%-os "duplikációs faktorra" méretezettek, mert nem fut mind egyszerre.</li>
+        <li><strong>Csővezeték útvonal tervezése</strong>: hossz, hajlatok, szigetelés</li>
+        <li><strong>Elektromos terhelés</strong>: 1 vagy 3 fázisú betáplálás kell?</li>
+      </ol>
+
+      <div class="article-callout"><strong>Helyi tipp:</strong> Kecskeméti új építésű családi házaknál érdemes <strong>már az építkezés tervezési fázisában</strong> betervezni a multi-split rendszert. A falba húzott elővezetékek később 50-100 ezer Ft-ot spórolnak, és esztétikailag tökéletes.</div>
+
+      <h2>A KIVITELEZÉS</h2>
+      <p>Egy 3-4 beltéri egységes multi-split telepítés <strong>2-3 napos munka</strong>. A főbb lépések:</p>
+      <ol>
+        <li>Csővezeték útvonalainak kijelölése, falfúrások</li>
+        <li>Csövek lefektetése, hőszigetelése</li>
+        <li>Beltéri és kültéri egységek felszerelése</li>
+        <li>Hűtőközeg-csatlakozások, vákuumozás (kritikus!)</li>
+        <li>Elektromos bekötés</li>
+        <li>Beüzemelés, próbaüzem, dokumentáció</li>
+      </ol>
+
+      <p>Tervez multi-split rendszert Kecskeméten, Lajosmizsén vagy a környéken? <strong>Ingyenes tervezés és helyszíni felmérés.</strong> Hívjon, beszéljük át a házát!</p>
+    `
+  },
+  {
+    cat:'Gázszerelés', date:'2026. május 2.', read:'7 perc',
+    title:'Gázkazán telepítés Kecskeméten – mi történik a beüzemelésnél?',
+    excerpt:'Új gázkazán telepítése Kecskeméten – a teljes folyamat lépésről lépésre, az engedélyektől a próbaüzemig.',
+    body:`
+      <p>Új gázkazán telepítése vagy cseréje <strong>nem egy órás munka</strong>. Kecskeméten, Lajosmizsén, Kiskunfélegyházán egy szabályos kazáncsere 1-3 napos folyamat, ami szigorú előírások szerint zajlik. Ebben a cikkben végigvezetem azon, mit várhat el egy tisztességes szakembertől és milyen lépések kötelezően be kell hogy következzenek.</p>
+
+      <h2>MIÉRT BONYOLULTABB, MINT GONDOLNÁNK?</h2>
+      <p>Egy gázkazán egy olyan készülék, ami <strong>tüzet tart bent a házában</strong>. Pontosabban: szabályozott égést, ami percenként akár 2-3 m³ gázt használ fel. Ha bármi elromlik – szivárgás, rossz égés, kéménybedugulás – akkor robbanás, tűz vagy szénmonoxid-mérgezés következhet be. Ezért szigorúan szabályozott a folyamat.</p>
+
+      <h2>A FOLYAMAT LÉPÉSEI</h2>
+
+      <h3>1. Helyszíni felmérés</h3>
+      <p>Ez a kiindulópont. Megnézem:</p>
+      <ul>
+        <li>A meglévő kazán állapotát</li>
+        <li>A ház méretét és hőszükségletét</li>
+        <li>A jelenlegi fűtési rendszert (radiátoros, padlófűtés, kombinált)</li>
+        <li>A meleg víz fogyasztást és a háztartás méretét</li>
+        <li>A gázvezeték állapotát</li>
+        <li>Az égéstermék-elvezetés lehetőségeit (kémény vagy zárt rendszer)</li>
+        <li>Az elérhető teret a kazánnak (fali vagy álló)</li>
+      </ul>
+      <p>Kecskeméten és környékén ez ingyenes szolgáltatásom.</p>
+
+      <h3>2. Kazán típus és méret kiválasztása</h3>
+      <p>Két fő szempont:</p>
+      <ul>
+        <li><strong>Teljesítmény (kW)</strong>: a ház hőszükségletéhez igazítva. Egy átlagos kecskeméti családi háznál 18-28 kW elég. Túlméretezés rossz – feleslegesen pörög, sokat kapcsolgat.</li>
+        <li><strong>Funkciók</strong>: csak fűtés (egyfunkciós) vagy fűtés + meleg víz (kombi)? Mekkora a meleg víz igény (családtagok száma)?</li>
+      </ul>
+
+      <h3>3. Tételes árajánlat</h3>
+      <p>24-48 órán belül kap egy <strong>tételes, írásos árajánlatot</strong> minden szükséges elemmel: kazán, anyagok, munkadíj, dokumentáció. Semmilyen rejtett tétel.</p>
+
+      <h3>4. Régi kazán leszerelése</h3>
+      <ul>
+        <li>Gáz és víz lezárása</li>
+        <li>Rendszer leürítése</li>
+        <li>Régi kazán biztonságos leszerelése, elszállítása (veszélyes hulladékként kezelve)</li>
+        <li>A csatlakozó pontok ellenőrzése, szükség szerinti felújítása</li>
+      </ul>
+
+      <h3>5. Új kazán pozícionálása és rögzítése</h3>
+      <ul>
+        <li>Fali kazánnál konzol, álló kazánnál stabil aljzat</li>
+        <li>Pontos vízszintbe állítás (különben rossz kondenzáció)</li>
+        <li>Megfelelő szervizelési térköz</li>
+      </ul>
+
+      <h3>6. Égéstermék-elvezető (kémény) bekötése</h3>
+      <p>Két fő típus:</p>
+      <ul>
+        <li><strong>Nyitott égésterű (atmoszférikus)</strong>: a házbeli levegőt használja, kémény szükséges. Modern házakban már ritkán használt.</li>
+        <li><strong>Zárt égésterű (turbó)</strong>: külön kül-bel csövön keresztül kapja a levegőt és üríti a füstgázt. Biztonságosabb, sokrétűbb.</li>
+      </ul>
+
+      <h3>7. Gázvezeték csatlakoztatás és tömörségi vizsgálat</h3>
+      <p>Itt jön az egyik legfontosabb lépés: <strong>tömörségi vizsgálat</strong>. A teljes gázrendszer zárt állapotában nyomást teszünk rá és <strong>20-30 percig figyeljük</strong>, hogy esik-e a nyomás. Ha esik, valahol szivárgás van – meg kell találni és javítani.</p>
+
+      <h3>8. Fűtési oldal bekötése</h3>
+      <ul>
+        <li>Előremenő és visszatérő vízvezeték csatlakozása</li>
+        <li>Tágulási tartály ellenőrzése/cseréje</li>
+        <li>Biztonsági szelep beépítése (kötelező!)</li>
+        <li>Nyomásmérő és töltőszelep</li>
+        <li>Iszapleválasztó/mágneses szűrő (a kazánt védi a rendszerből származó szennyeződéstől)</li>
+      </ul>
+
+      <h3>9. Légtelenítés és nyomásbeállítás</h3>
+      <p>A fűtési rendszerből minden levegőt kiengedünk, és az üzemi nyomást (1,2-1,5 bar hidegen) beállítjuk.</p>
+
+      <h3>10. Beüzemelés</h3>
+      <p><strong>EZ A LEGFONTOSABB!</strong> Új gázkazán első beüzemelését <strong>kizárólag a gyártó hivatalos képviselete vagy felhatalmazott szerelője</strong> végezheti. Ez a gyári garancia feltétele.</p>
+      <p>A beüzemelés alatt:</p>
+      <ul>
+        <li>Égési paraméterek mérése (CO, CO₂, hőmérséklet)</li>
+        <li>Gáz/levegő arány finomhangolása</li>
+        <li>Vezérlés beállítása az adott ház igényeihez</li>
+        <li>Próbaüzem teljes terheléssel és minimum üzemmódban</li>
+        <li>Megfelelőség igazolása mérőműszerrel</li>
+      </ul>
+
+      <h3>11. Dokumentációs átadás</h3>
+      <p>A munka végén megkapja:</p>
+      <ul>
+        <li>Beüzemelési jegyzőkönyv</li>
+        <li>Tömörségi nyilatkozat</li>
+        <li>Garanciajegy (gyári)</li>
+        <li>Tételes munkalap</li>
+        <li>Számla</li>
+        <li>Kéményseprői igazolás (ha új égéstermék-elvezetés készült)</li>
+        <li>Kazán kezelési útmutatója</li>
+        <li>Karbantartási tájékoztató</li>
+      </ul>
+
+      <div class="article-callout"><strong>Fontos tudni:</strong> egy kondenzációs kazán <strong>évente kötelező</strong> szervizelést igényel. Ez nemcsak a hatékonyság érdekében fontos, hanem a gyári garancia is megszűnik, ha nem dokumentáltan végzik el. Egy karbantartás 20-40 ezer Ft, és sokszor megspórol egy 100-200 ezer Ft-os javítást.</div>
+
+      <h2>BEÁLLÍTÁS – AHOL A LEGTÖBBET LEHET NYERNI</h2>
+      <p>Sok kollégám "csak betelepíti" a kazánt, de nem hangolja a házhoz. Egy <strong>jól beállított kondenzációs kazán 10-20%-kal kevesebb gázat fogyaszt</strong>, mint egy gyári alapbeállításban hagyott. Ezért nálam mindig benne van az árajánlatban a kültéri hőmérséklet-érzékelős vezérlés beállítása, az időprogram-tervezés és a meleg víz hőfokának optimális beállítása.</p>
+
+      <p>Tervez kazáncserét Kecskeméten, Lajosmizsén, Tiszakécskén vagy a környéken? <strong>Engedéllyel, garanciával, teljes dokumentációval dolgozom.</strong> Hívjon ingyenes felmérésért!</p>
+    `
+  },
+  {
+    cat:'Fűtésszerelés', date:'2026. május 9.', read:'8 perc',
+    title:'Kazánház Kecskeméten – a háttér mögötti rendszer',
+    excerpt:'Modern kazánház Kecskeméten – komponensek, vezérlés, hibrid rendszerek és a tervezés legfontosabb szempontjai.',
+    body:`
+      <p>Egy modern kazánház messze több, mint egy "kazán a sarokban". <strong>Tervezett, vezérelt, biztonságos rendszer</strong>, ami akár 20-25 évig is hibamentesen szolgálhat. Kecskeméten, Lajosmizsén, Kerekegyházán és Bács-Kiskun megyében sokat építettem már – ebben a cikkben megmutatom, milyen elemekből áll és miért fontos mindegyik.</p>
+
+      <h2>MI EGY KOMPLETT KAZÁNHÁZ?</h2>
+      <p>A kazánház a fűtési és melegvíz-ellátó rendszer "központja". Itt van:</p>
+      <ul>
+        <li>A hőtermelő (gázkazán, hőszivattyú, vagy mindkettő)</li>
+        <li>A vezérlő rendszer (automatika)</li>
+        <li>A keringtető szivattyúk</li>
+        <li>A puffer tartály (ha van)</li>
+        <li>A melegvíz tároló</li>
+        <li>Az osztó-gyűjtő egységek (a különböző fűtési körökhöz)</li>
+        <li>A biztonsági elemek (szelepek, tágulási tartály)</li>
+        <li>A szűrők és iszapleválasztók</li>
+        <li>Az érzékelők (hőmérséklet, nyomás, áramlás)</li>
+      </ul>
+
+      <h2>A PUFFER TARTÁLY – AMIRE SOKAN NEM GONDOLNAK</h2>
+      <p>A puffer tartály egy <strong>hőtárolós víztartály</strong>, ami a kazán és a fűtési rendszer közé kerül. Miért hasznos?</p>
+      <ul>
+        <li><strong>Stabilabb működés</strong>: a kazán nem reagál minden apró hőigényre, hanem nagyobb adagokban tölt fel hőt</li>
+        <li><strong>Élettartam növelés</strong>: kevesebb ki-be kapcsolás = kevesebb kopás</li>
+        <li><strong>Hibrid lehetőség</strong>: ha hőszivattyú és kazán is van, a puffer közvetít köztük</li>
+        <li><strong>Napkollektoros bővíthetőség</strong>: a napkollektor a tartályba táplálhat</li>
+        <li><strong>Áramszünet-toleráns</strong>: néhány órányi tartalék hő a tartályban</li>
+      </ul>
+      <p>Egy átlagos családi házhoz 200-400 literes puffer tartály elegendő.</p>
+
+      <h2>A HIDRAULIKAI VÁLTÓ (HIDRAULIKAI EGYENSÚLY)</h2>
+      <p>Ha a kazánházban több fűtési kör van (radiátor + padlófűtés + melegvíz), kell egy <strong>hidraulikai váltó</strong>. Ez egy függőleges cső, ami "elválasztja" a kazán-oldalt a fogyasztó-oldaltól.</p>
+      <p>Miért fontos? Mert a kazán szivattyúja és a fűtési körök szivattyúi <strong>egymástól függetlenül</strong> tudnak működni. Egyébként az egyik szivattyú a másikat befolyásolná, és a rendszer egyensúlytalanná válna.</p>
+
+      <h2>OSZTÓ-GYŰJTŐ</h2>
+      <p>A fűtési körök szétválasztó és összegyűjtő pontja. Itt látható az egyes körök:</p>
+      <ul>
+        <li>Beállított hőmérséklete</li>
+        <li>Aktuális vízátfolyása</li>
+        <li>Szabályozó szelepei (kézi vagy motoros)</li>
+        <li>Levegő-eltávolító szelepei</li>
+      </ul>
+      <p>Modern osztó-gyűjtőkben minden áramlásmérő látható, és helyiségenként/körönként finomhangolható a hőeloszlás.</p>
+
+      <h2>A VEZÉRLÉS – AHOL A LEGTÖBBET LEHET NYERNI</h2>
+      <p>Egy modern kazánházi vezérlés alapelemei:</p>
+
+      <h3>Kültéri hőmérséklet-érzékelő</h3>
+      <p>A kültéri hőmérséklet függvényében szabályozza a fűtővíz hőmérsékletét. Hidegebb idő = magasabb előremenő. Ez a <strong>fűtésgörbe</strong> az időjárás-érzékeny vezérlés alapja, és 15-25%-os energia-megtakarítást ad.</p>
+
+      <h3>Időprogram</h3>
+      <p>Más hőmérséklet nappal, este, éjjel, hétvégén. A vezérlő automatikusan vált.</p>
+
+      <h3>Helyiségenkénti termosztát</h3>
+      <p>Padlófűtés osztó-gyűjtőin motoros szelepekkel, radiátorokon termosztatikus fejjel.</p>
+
+      <h3>Okos vezérlés</h3>
+      <p>Modern rendszerekben telefonról vezérelhető, programozható, "tanulja" a háztartás szokásait. Geolocation-alapú előfűtés stb.</p>
+
+      <h2>HIBRID RENDSZEREK</h2>
+      <p>Egyre népszerűbb Kecskeméten is. A hibrid rendszer két különböző hőforrást használ – tipikusan:</p>
+      <ul>
+        <li><strong>Hőszivattyú + gázkazán</strong></li>
+        <li>Hőszivattyú + napkollektor</li>
+        <li>Kazán + napkollektor</li>
+      </ul>
+      <p>A vezérlő automatikusan választja a <strong>legolcsóbb hőforrást</strong> az aktuális körülmények alapján. Pl.:</p>
+      <ul>
+        <li>+5°C felett: hőszivattyú (olcsó áramból sok hő)</li>
+        <li>-5°C alatt: gázkazán (a hőszivattyú COP-ja már alacsony lenne)</li>
+        <li>Nyáron napsütésben: napkollektor (ingyen)</li>
+      </ul>
+      <p>Ez 30-40%-os megtakarítást is hozhat egy tisztán gázkazánhoz képest – főleg, ha napelem is van.</p>
+
+      <div class="article-callout"><strong>Helyi tapasztalat:</strong> Kecskeméten sok régi kazánházat látok, ahol egyetlen szivattyú próbálja kiszolgálni az egész rendszert – padlófűtést, radiátorokat, melegvizet egyszerre. Ez sosem működik optimálisan. Egy átszervezéssel (váltó, osztó-gyűjtő, külön szivattyúk) sok ház kapja vissza az eredeti komfortját anélkül, hogy a kazánt is cserélni kellene.</div>
+
+      <h2>BIZTONSÁGI ELEMEK</h2>
+      <p>Kötelező elemek:</p>
+      <ul>
+        <li><strong>Biztonsági szelep</strong> (3 bar): ha túl nyomás keletkezik, leereszti</li>
+        <li><strong>Tágulási tartály</strong>: a víz hőtágulásból adódó nyomást nyeli el</li>
+        <li><strong>Vízhiány-biztosítás</strong>: ha leesik a nyomás (pl. szivárgás), leállítja a kazánt</li>
+        <li><strong>Túlmelegedés-védelem</strong>: ha valamilyen hibából kifutott a hőmérséklet, leállítja</li>
+        <li><strong>Visszacsapó szelepek</strong> kritikus pontokon</li>
+        <li><strong>Gázérzékelő</strong>: opcionális, de erősen ajánlott</li>
+        <li><strong>Szénmonoxid-érzékelő</strong>: életmentő lehet</li>
+      </ul>
+
+      <h2>BŐVÍTHETŐSÉG</h2>
+      <p>Egy jól tervezett kazánházat <strong>fokozatosan</strong> lehet fejleszteni:</p>
+      <ul>
+        <li>Most: gázkazán + padlófűtés</li>
+        <li>+2 év: hozzá napkollektor</li>
+        <li>+5 év: bekerül hőszivattyú is</li>
+        <li>+8 év: napelem (akkor a hőszivattyú "ingyen" megy)</li>
+      </ul>
+      <p>Ezért fontos, hogy a tervezésnél már gondoljunk a jövőre – a megfelelő nagyságú puffer tartály, az előre rákötött csatlakozási pontok megspórolnak később sok átépítést.</p>
+
+      <p>Kecskeméti és környékbeli ügyfeleimnek <strong>ingyenes kazánházi tervezést</strong> kínálok – akár új építésnél, akár felújításnál. Hívjon, beszéljük át a házát és a hosszú távú terveit!</p>
+    `
+  },
+  {
+    cat:'Vízszerelés', date:'2026. május 7.', read:'7 perc',
+    title:'Új építésű ház vízhálózata Kecskeméten – tervezés, amely évtizedekre szól',
+    excerpt:'Új építésű ház vízhálózata Kecskeméten – anyagok, tervezés, vízlágyítás és a leggyakoribb hibák kerülése.',
+    body:`
+      <p>Új építésű ház vízhálózata egy ritkán meghozott döntés – mégis <strong>30-50 évre kihat</strong> a háztartás komfortjára és költségeire. Ha rosszul tervezett, a tulajdonos évekig küszködik kis nyomással, lassú meleg vízzel, dugulásokkal. Kecskeméten, Lajosmizsén, Kerekegyházán sokszor látom a következményeit – ezért érdemes az építkezés elején alaposan átgondolni.</p>
+
+      <h2>A VÍZHÁLÓZAT FELÉPÍTÉSE</h2>
+      <p>Egy lakossági vízhálózat fő ágai:</p>
+
+      <h3>Bejövő hidegvíz</h3>
+      <p>A telekhatáron lévő vízóra után jön be a házba. Itt kerül:</p>
+      <ul>
+        <li>Vízóra (a közmű szolgáltatóé)</li>
+        <li>Főelzáró (a házban)</li>
+        <li>Szennyezésszűrő (ne kerüljön rozsda, kavics a rendszerbe)</li>
+        <li>Nyomáscsökkentő szelep (3-4 bar üzemi nyomásra)</li>
+        <li>Vízlágyító (Kecskeméten elengedhetetlen)</li>
+        <li>Visszacsapó szelep (a házi rendszer ne folyhasson vissza a hálózatba)</li>
+      </ul>
+
+      <h3>Hidegvíz hálózat</h3>
+      <p>A főelosztótól indul, és elágazik a konyha, fürdő, mosógép, kerti csap, WC stb. felé. Modern házban minden fő pont előtt elzáró szelep van.</p>
+
+      <h3>Melegvíz előállítás</h3>
+      <p>Vagy a kazánból kombi módon, vagy külön bojlerből/melegvíz tárolóból. Méretezés: a háztartás létszáma és szokásai szerint.</p>
+
+      <h3>Melegvíz hálózat</h3>
+      <p>A melegvíz tárolójától/kombi kazántól a felhasználási pontokig. Itt fontos a <strong>cirkulációs vezeték</strong>: ha a felhasználási pont (pl. távoli fürdő) messze van a kazánok, akkor felhasználáskor 10-30 másodperc kell, mire kijön a meleg víz a csapnál. A cirkulációs vezeték folyamatosan visszakeringeti a meleg vizet, így bármelyik csapot megnyitva azonnal meleg jön.</p>
+
+      <h3>Szennyvíz (lefolyó) hálózat</h3>
+      <p>Ez a fordított ág: a használt víz távozik. Megfelelő esésszöggel (2-3%), elszigetelt szellőzőkkel, csatornaköttetéssel.</p>
+
+      <h2>ANYAGVÁLASZTÁS – A LEGFONTOSABB DÖNTÉS</h2>
+
+      <h3>Rézcső</h3>
+      <p><strong>Élettartam: 50+ év, prémium minőség.</strong></p>
+      <ul>
+        <li>Hosszú élettartam (akár 80-100 év is)</li>
+        <li>Hőre is jó (melegvíz vezetéknek tökéletes)</li>
+        <li>Antimikrobiális (gátolja a baktériumok szaporodását)</li>
+        <li>Hátrány: drága, kemény víznél lerakódik bent</li>
+      </ul>
+
+      <h3>Többrétegű (PEX-Al-PEX vagy PE-RT/Al/PE-RT)</h3>
+      <p><strong>Élettartam: 30-50 év, jó középút.</strong></p>
+      <ul>
+        <li>Belül és kívül műanyag, középen alumínium réteg</li>
+        <li>Korrózióálló</li>
+        <li>Hajlékony – kevesebb csatlakozás, kevesebb hibalehetőség</li>
+        <li>Hőtágulás kisebb mint a tisztán műanyagnál</li>
+        <li>Hátrány: speciális kötéstechnika szükséges (présidomok)</li>
+      </ul>
+
+      <h3>PP-R (polipropilén)</h3>
+      <p><strong>Élettartam: 25-50 év, olcsóbb megoldás.</strong></p>
+      <ul>
+        <li>Olcsó</li>
+        <li>Heganyaggal könnyen kötik</li>
+        <li>Vegyileg ellenálló</li>
+        <li>Hátrány: hőtágulás nagyobb, esztétikailag merev csak</li>
+      </ul>
+
+      <h3>Ne használjon</h3>
+      <ul>
+        <li><strong>Régi acél vagy horganyzott cső</strong> új építésnél – elavult technológia</li>
+        <li><strong>Ólomcsövet</strong> – egészségkárosító, jogszabályilag is tilos</li>
+        <li><strong>Vegyes anyagokat egy körben</strong> – galvanikus korrózió alakulhat ki</li>
+      </ul>
+
+      <h2>NYOMÁS ÉS ÁRAMLÁS</h2>
+      <p>A háztartási víz optimális nyomása <strong>3-4 bar</strong>. Magasabb nyomás:</p>
+      <ul>
+        <li>Csaptelepek, tömítések gyorsabb kopása</li>
+        <li>Megnövekedett vízfogyasztás (több folyik ki ugyanannyi idő alatt)</li>
+        <li>Hangos zúgás a csapok megnyitásakor</li>
+        <li>Vízkalapács (csapzáráskor erőteljes lökés)</li>
+      </ul>
+      <p>Ezért egy <strong>nyomáscsökkentő szelep</strong> a bejövő ágon mindenkinek ajánlott Kecskeméten.</p>
+
+      <h2>A VÍZLÁGYÍTÓ – BÁCS-KISKUN MEGYEI KÜLÖNLEGESSÉG</h2>
+      <p>Kecskemét és környékének vize <strong>nagyon kemény</strong> (28-40 NK° között). Ez azt jelenti, hogy sok kalcium és magnézium van benne. Mit okoz?</p>
+      <ul>
+        <li>Vízkő lerakódás a csapokban, csempéken, csaptelepekben</li>
+        <li>Mosogatógép, mosógép, kazán <strong>élettartam 50-70%-os csökkenése</strong></li>
+        <li>Magasabb mosószer-fogyasztás</li>
+        <li>Szárazabb bőr, fakó haj</li>
+        <li>Vízmelegítés hatásfok-csökkenése (a vízkő hőszigetelő rétegként hat)</li>
+      </ul>
+      <p>Egy központi <strong>ioncserélő vízlágyító</strong> megoldja a problémát. Folyamatosan kicseréli a kalcium és magnézium ionokat nátrium ionokra (a sópótlása rendszeres feladat, de a karbantartás egyszerű).</p>
+
+      <div class="article-callout"><strong>Megtakarítás:</strong> Egy vízlágyító nélküli kecskeméti háztartásban a háztartási gépek átlag 7-10 év alatt cserére szorulnak. Vízlágyítóval 15-20 év is elérhető. Ez összességében <strong>500 ezer – 1 millió forint megtakarítás</strong> az élettartamra vetítve – nem beszélve a kazán hosszabb élettartamáról.</div>
+
+      <h2>HMV (HASZNÁLATI MELEGVÍZ) – HOL TÁROLJA?</h2>
+      <p>Két fő rendszer:</p>
+
+      <h3>Pillanatnyi (átfolyós)</h3>
+      <p>Kombi kazán adja a meleg vizet, amikor megnyitja a csapot. Előnye: nincs tárolási veszteség. Hátránya: korlátozott a teljesítmény (egyidejűleg pl. nem lehet zuhanyozni és mosogatógépet járatni).</p>
+
+      <h3>Tárolós</h3>
+      <p>Egy 100-300 literes tartályban folyamatosan kész meleg víz. Előnye: nagy egyidejű igények ellátása. Hátránya: tárolási veszteség (a tartály folyamatosan veszít hőt), nagyobb hely.</p>
+
+      <p>4 fős kecskeméti családi háznál egy 200 literes tárolós rendszer az ideális, vagy egy nagy teljesítményű kombi kazán.</p>
+
+      <h2>SZERELÉS BETONOZÁS ELŐTT VAGY UTÁN?</h2>
+      <p>Új építésnél a fő vezetékek és a fő elosztó <strong>betonozás előtt</strong> menjenek a helyükre. A finom elágazások (egyes szanyiterekhez, csaptelepekhez) jönnek a falazás után. Aki utólag akar mindent, fal lebontásával jár.</p>
+
+      <h2>A LEGGYAKORIBB HIBÁK</h2>
+      <ul>
+        <li>Túl kicsi a fő vezetékméret (alacsony nyomás minden ponton)</li>
+        <li>Nincs cirkulációs vezeték (lassú meleg víz)</li>
+        <li>Hiányzó vagy rossz helyen lévő elzáró szelepek</li>
+        <li>Nincs vízlágyító Kecskeméten (drága háztartás)</li>
+        <li>Rossz lefolyó-esésszög (dugulás-hajlam)</li>
+        <li>Olcsó, gyenge minőségű csaptelepek (3-5 év és cserélni kell)</li>
+      </ul>
+
+      <p>Új építkezést tervez Kecskeméten, Lajosmizsén, Kerekegyházán vagy a környéken? <strong>Ingyenes tervezési konzultáció</strong>, részletes ajánlat. Beszéljük át, hogyan tervezzük úgy, hogy 30 év múlva is panaszmentes legyen a háza!</p>
+    `
+  },
+  {
+    cat:'Gázszerelés', date:'2026. május 5.', read:'6 perc',
+    title:'Gázvezeték átépítés Kecskeméten – mikor és miért?',
+    excerpt:'Gázvezeték átépítés Kecskeméten és környékén – az okok, a folyamat, az engedélyek és a leggyakoribb tévhitek.',
+    body:`
+      <p>Gázvezeték átépítés sokak életében egyszer-kétszer felmerül – új konyhabútor, új kazánhely, bővítés vagy hatósági ellenőrzés miatt. Ez nem amatőr munka: <strong>tervezést, engedélyt, dokumentációt</strong> igényel. Kecskeméten, Lajosmizsén és Bács-Kiskun megyében évente sokat csinálok – ebben a cikkben bemutatom, mit jelent pontosan.</p>
+
+      <h2>MIKOR SZÜKSÉGES ÁTÉPÍTÉS?</h2>
+
+      <h3>Új konyha</h3>
+      <p>Talán a leggyakoribb ok. A gáztűzhely más helyre kerül, mint korábban volt – például sziget-konyha lesz, vagy a tűzhely más sarokban. A gázvezetéket át kell vinni az új helyre.</p>
+
+      <h3>Kazán áthelyezése</h3>
+      <p>Új kazánházat alakít ki a pincében vagy padláson, és a régi kazán helyét más célra használja. A teljes csővezetékhálózatot újra kell tervezni.</p>
+
+      <h3>Bővítés</h3>
+      <p>Új gázkészülék – pl. korábban csak kazán volt, most gáztűzhely is jön. A meglévő vezetékről nem csak T-elágazást teszünk; sokszor a méret is változik.</p>
+
+      <h3>Hatósági ellenőrzés</h3>
+      <p>Az időszakos kéménysepri vagy gázbiztonsági ellenőrzés talált szabálytalanságot. Pl. nem megfelelő anyag, korrodált szakasz, hiányzó elzáró, rossz szellőzés.</p>
+
+      <h3>Régi, elöregedett vezeték</h3>
+      <p>30-50 éves acélcsövek belülről rozsdásodnak, kívülről pedig fal- vagy talajnedvesség hatására. Egy idő után kockázat.</p>
+
+      <h3>Lakásvásárlás után</h3>
+      <p>Új ingatlanvásárlás után érdemes átnézetni a gázrendszert – nem örököl-e olyan szabálytalanságot, amit majd Önnek kell rendeznie.</p>
+
+      <h2>A FOLYAMAT</h2>
+
+      <h3>1. Helyszíni felmérés</h3>
+      <p>A meglévő rendszer feltérképezése, az igények tisztázása. Ingyenes szolgáltatás Kecskeméten és 30 km-en belül.</p>
+
+      <h3>2. Tervezés</h3>
+      <p>Egyszerű készülék-áthelyezésnél bejelentési kötelezettség van. Komplexebb esetekben tervezési és engedélyeztetési folyamat indul.</p>
+
+      <h3>3. Hatósági engedélyeztetés (ha szükséges)</h3>
+      <p>A terv a hatóságok (gázszolgáltató, esetenként önkormányzat) elé kerül. Egy egyszerűbb engedély 2-4 hét alatt megvan, bonyolultabb terveknél 2-3 hónap is lehet.</p>
+
+      <h3>4. Régi vezeték lezárása</h3>
+      <p>A munkavégzés idejére a gáz lezárása szükséges. Általában a vízóra utáni főelzárónál megoldható.</p>
+
+      <h3>5. Bontás és új építés</h3>
+      <p>A régi szakaszok eltávolítása, az új vezetékek lefektetése. Csak <strong>tanúsított anyagokat</strong> használunk – kerámiavarrott acélcső, sárgaréz idomok, vagy modern műanyag-fém kombinált megoldások (csak földbe ágyazva).</p>
+
+      <h3>6. Nyomáspróba</h3>
+      <p>A teljes új rendszer <strong>levegővel feltöltve, magas nyomáson</strong> teszteljük. A próba kötelezően jegyzőkönyvvel zárul.</p>
+
+      <h3>7. Tömörségi nyilatkozat</h3>
+      <p>A próba alapján kiállítjuk a hivatalos dokumentumot.</p>
+
+      <h3>8. Hatósági átvétel és üzembe helyezés</h3>
+      <p>A szolgáltató kiküldi az ellenőrt, aki megnézi a munkát és (ha minden megfelel) engedélyezi a gáz visszaadását.</p>
+
+      <h2>TÉVHITEK ÉS GYAKORI HIBÁK</h2>
+
+      <h3>"Csak átviszem máshova, ez nem nagy dolog"</h3>
+      <p>Még a legkisebb gázvezeték-módosítás is engedélyköteles és csak gázszerelői jogosultsággal végezhető. Nem mindegy.</p>
+
+      <h3>"Az sógorom is csinált ilyet, jó volt"</h3>
+      <p>Bizotsági szabálytalanságok többnyire csak akkor derülnek ki, amikor baj van. Pl. egy mérgezés vagy robbanás – akkor viszont a biztosítás nem fizet.</p>
+
+      <h3>"Olcsón is csinálják, nézzük meg azt"</h3>
+      <p>A "papír nélküli" árajánlat 30-50%-kal alacsonyabb lehet, de az életet és a házat kockáztatja. Soha nem éri meg.</p>
+
+      <h3>"Régi vezeték még jó, csak a csatlakozást cseréljük"</h3>
+      <p>Sokszor látom, hogy korrodált régi szakasz mellett új csatlakozás van. Ez egyenlő egy hibás láncszemmel – a leggyengébb pont teljesítményén megy a rendszer.</p>
+
+      <div class="article-callout"><strong>Tudnia kell:</strong> a gázszolgáltató időről időre (általában 5 évente) <strong>kötelezően ellenőrzi</strong> a házi gázrendszert. Ha akkor derül ki a hiba, kényszerítve van a megjavításra – és ekkor már nem alkudozhat az árban. Ezért érdemes saját kezdeményezésre időben megnézetni.</div>
+
+      <h2>ENGEDÉLY NÉLKÜLI MUNKA KÖVETKEZMÉNYEI</h2>
+      <ul>
+        <li>Biztosítás megszűnik gázbalesetek esetére</li>
+        <li>Hatósági bírság (50 ezertől akár 1 millió Ft-ig)</li>
+        <li>Kényszer-megszüntetés a gázvételezésnek</li>
+        <li>Eladáskor problémás (új tulajdonos felismeri a szabálytalanságot)</li>
+        <li>Életveszély – ez a legfontosabb</li>
+      </ul>
+
+      <p>Gázvezeték átépítést tervez Kecskeméten, Lajosmizsén, Kiskunfélegyházán, Tiszakécskén vagy a környéken? <strong>Engedéllyel, dokumentáltan, garanciával.</strong> Hívjon ingyenes felmérésért – beszéljük át, mi az ideális megoldás!</p>
+    `
+  },
+  {
+    cat:'Klímaszerelés', date:'2026. április 30.', read:'7 perc',
+    title:'Ipari klíma Kecskeméten – más szakértelem, más megközelítés',
+    excerpt:'Ipari és kereskedelmi klímarendszerek Kecskeméten – tervezési szempontok, technológiák, gyakorlati tippek vállalkozóknak.',
+    body:`
+      <p>Egy iroda, üzlet, raktár vagy vendéglátóhely klímatizálása <strong>más szakmai megközelítést igényel</strong>, mint egy lakóingatlané. Az ipari klíma napi 8-12 óra üzem mellett, évente 2000-3000 órát megy – ezért a tartósság, az energiahatékonyság és a karbantarthatóság létfontosságú. Kecskeméten és Bács-Kiskun megyében sok kis- és középvállalkozásnak tervezek rendszert.</p>
+
+      <h2>MIBEN MÁS AZ IPARI KLÍMA?</h2>
+
+      <h3>Üzemidő és terhelés</h3>
+      <p>Egy lakásklíma napi 4-6 óra üzem mellett 1000-1500 órát megy évente. Egy üzleti klíma viszont gyakran <strong>2-3-szor ennyit</strong>. Ez nemcsak az alkatrészek kopását gyorsítja, hanem a hűtőközeg-rendszer is jobban igénybe van véve. Az ipari rendszerek erősebb kompresszorral, vastagabb csövekkel és tartósabb komponensekkel készülnek.</p>
+
+      <h3>Méretek és teljesítmény</h3>
+      <p>Egy lakókomforti klíma 2-7 kW közötti. Ipari rendszerek 10-100 kW és afölött dolgoznak. Nemcsak nagyobb egyetlen készülék, hanem több egység összehangolt működése is gyakori.</p>
+
+      <h3>Légtömeg és levegőminőség</h3>
+      <p>Egy lakásnál csak a hőmérséklet a fő szempont. Üzletben, irodában <strong>a páratartalom, a friss levegő mennyisége és a légtömeg is fontos</strong>. Ezért gyakran szellőzéssel kombinált, hőszabályozott rendszerek készülnek.</p>
+
+      <h2>TIPIKUS RENDSZEREK</h2>
+
+      <h3>VRF/VRV (Variable Refrigerant Flow)</h3>
+      <p>Az ipari klimaipar csúcstechnológiája. <strong>Egyetlen nagy kültéri egységből akár 30-50 beltéri egység</strong> működtethető. Minden beltéri külön szabályozható, és a rendszer dinamikusan elosztja a teljesítményt aszerint, hogy mire van szükség.</p>
+      <p>Előnyei:</p>
+      <ul>
+        <li>Külön zónáknak külön hőmérséklet</li>
+        <li>Magas hatásfok (a kültéri egység csak annyit dolgozik, amennyi épp kell)</li>
+        <li>Egyes rendszerek egyidejűleg hűt és fűt is (3-csöves típus)</li>
+        <li>Központi vezérlés, BMS integráció</li>
+      </ul>
+
+      <h3>Multi-split (kisebb üzletekhez)</h3>
+      <p>1 kültéri egység, 2-8 beltéri. Kisebb üzletekhez, irodákhoz ideális. Olcsóbb mint a VRF, de korlátozottabb.</p>
+
+      <h3>Központi (csatornás) légkezelő</h3>
+      <p>Egy központi egységből légvezetékeken keresztül juttatja el a klimatizált levegőt mindenhova. Gyakori a kereskedelmi-, vendéglátóhelyeken. Előnye: friss levegő bevezetés is megoldható.</p>
+
+      <h3>Hőszivattyús ipari rendszer</h3>
+      <p>Hűtés mellett fűtésre is használható – egy egységben két funkció. Üzleteknél, irodaházaknál a téli fűtést is megoldhatja.</p>
+
+      <h2>BELTÉRI EGYSÉG TÍPUSOK</h2>
+
+      <h3>Fali (klasszikus)</h3>
+      <p>Mint a lakásklímákban, csak nagyobb. Kis üzletekhez, irodákhoz.</p>
+
+      <h3>Kazettás (mennyezeti)</h3>
+      <p>Az álmennyezetbe építhető 4-utas befúvású egység. Esztétikus, csendes, egyenletes légeloszlás.</p>
+
+      <h3>Csatornás (rejtett)</h3>
+      <p>Az álmennyezetbe épített egység, és a levegőt csatornán keresztül juttatja el a rácsokhoz. Teljesen láthatatlan rendszer.</p>
+
+      <h3>Padlóra állítható / parapet</h3>
+      <p>Régi épületeknél, ahol nincs álmennyezet, vagy fűtés is kell.</p>
+
+      <h2>TERVEZÉSI SZEMPONTOK</h2>
+
+      <h3>Hőterhelés-számítás</h3>
+      <p>A légtér méretén túl figyelembe kell venni:</p>
+      <ul>
+        <li><strong>Belső hőtermelés</strong>: emberek (kb. 100 W/fő), világítás, számítógépek, gépek</li>
+        <li><strong>Külső hőterhelés</strong>: napsugárzás, kültéri hőmérséklet</li>
+        <li><strong>Szellőzési hőveszteség</strong>: a friss levegővel beérkező hő</li>
+        <li><strong>Speciális szempontok</strong>: szerverszobánál állandó hűtés, étteremben főzőtér</li>
+      </ul>
+
+      <h3>Energiahatékonyság</h3>
+      <p>Az ipari rendszerek <strong>évente kWh-ban hatalmas energiát fogyasztanak</strong>. Egy rosszul méretezett vagy alacsony hatásfokú rendszer évente több százezer forint plusz rezsit jelenthet. Az EER (Energy Efficiency Ratio) és a SEER kulcsmutatók.</p>
+
+      <h3>Karbantarthatóság</h3>
+      <p>A rendszert úgy kell tervezni, hogy a szerviz hozzáférjen minden ponthoz. Egy nehezen elérhető hőcserélő tisztításához óriási munkadíj jár.</p>
+
+      <h3>Skálázhatóság</h3>
+      <p>Egy bővülő cégnél fontos: lehet-e később új beltéri egységet hozzáadni a rendszerhez? VRF rendszereknél igen, multi-splitnél korlátozott.</p>
+
+      <h3>Szabályozhatóság</h3>
+      <p>Zónákra osztott vezérlés, időprogramok (pl. munkaidő után csökkentett üzem), BMS-integráció lehetősége nagyobb épületeknél.</p>
+
+      <h2>TIPIKUS BELÉPŐ TÉVHITEK</h2>
+
+      <h3>"Csak nagyobb klímát rakjunk fel, és kész"</h3>
+      <p>Túlméretezés is rossz: gyakori ki-bekapcsolás, alacsony hatásfok, kompresszor gyors kopása. A pontos méretezés a kulcs.</p>
+
+      <h3>"Olcsó márkát választunk"</h3>
+      <p>Ipari használatban a tartósság kritikus. Egy bukás (1-2 napos leállás) több százezer forint kiesést jelenthet. Prémium márka (Daikin, Mitsubishi, Toshiba, LG) megtérülő befektetés.</p>
+
+      <h3>"Karbantartás majd egyszer..."</h3>
+      <p>Ipari rendszereknél <strong>negyedéves vagy féléves szervizelés</strong> ajánlott. Egy elhanyagolt rendszer 30-50%-kal több energiát fogyaszt és gyorsabban tönkremegy.</p>
+
+      <div class="article-callout"><strong>Tipp vállalkozóknak:</strong> Az ipari klíma beszerelési költsége jelentős, de a <strong>magasabb amortizációs leírási kulcs miatt adóelőnyt</strong> is jelent. Egyezzünk egy könyvelővel az optimális beszerzési forma megválasztásáról.</div>
+
+      <h2>A TERVEZÉSI FÁZIS</h2>
+      <p>Egy komolyabb ipari rendszer telepítését <strong>2-4 hetes tervezési folyamat</strong> előzi meg:</p>
+      <ol>
+        <li>Helyszíni felmérés, részletes konzultáció</li>
+        <li>Hőterhelés-számítás, technológia kiválasztás</li>
+        <li>Műszaki ajánlat, alternatívák</li>
+        <li>Végleges terv, anyag- és munkalista</li>
+        <li>Kivitelezési ütemterv</li>
+      </ol>
+
+      <p>Iroda, üzlet, raktár, vendéglátóhely klimatizálását tervezi Kecskeméten vagy Bács-Kiskun megyében? <strong>Ingyenes konzultáció és tervezés.</strong> Hívjon, beszéljük át az igényeit – minden vállalkozás más, ezért minden megoldás egyedi!</p>
+    `
+  },
+  {
+    cat:'Vízszerelés', date:'2026. április 25.', read:'6 perc',
+    title:'Esővízgyűjtő rendszer Kecskeméten – hogyan működik és miért megéri',
+    excerpt:'Esővízhasznosítás Kecskeméten – a rendszer felépítése, használati lehetőségek, megtérülés és tervezési tippek.',
+    body:`
+      <p>Az esővízgyűjtés ma már nem zöld-aktivista hobbi – <strong>kifizetődő befektetés és ökológiai felelősség</strong>. Egy átlagos kecskeméti családi ház (120 m² tetővel) évente 50-80 m³ esővizet tud begyűjteni – ez a teljes éves vízfogyasztás 25-40%-a egy 4 fős családban. Kecskeméten, Lajosmizsén, Kerekegyházán egyre több ügyfél kéri a kiépítését.</p>
+
+      <h2>MIÉRT ÉRDEMES?</h2>
+
+      <h3>Anyagi megtakarítás</h3>
+      <p>A kecskeméti vízdíj 2026-ban kb. 800-1000 Ft/m³ (víz + csatorna). Évi 60 m³ kiváltása 50-60 ezer Ft megtakarítás – csak a vízdíjon. Ha kiváltja a kerti öntözést és a WC öblítést is, ez akár <strong>100-150 ezer Ft</strong> évente.</p>
+
+      <h3>Ökológiai felelősség</h3>
+      <p>Az ivóvíz-tisztítás energiaigényes folyamat. Esővizet öntözésre vagy WC-be használni 100%-kal megfelelőbb, mint kezelt ivóvizet pazarolni.</p>
+
+      <h3>Növények egészsége</h3>
+      <p>Az esővíz <strong>lágy, klórmentes, ásványi anyag szegény</strong> – sokkal jobb a növényeknek, mint a kemény, klóros csapvíz. Tapasztalt kertészek mindig esővízzel locsolnak.</p>
+
+      <h3>Biztonság</h3>
+      <p>Vízhiány esetén (pl. nyári korlátozás) az esővíz-tartály tartalék készletet jelent.</p>
+
+      <h3>Áradás-megelőzés</h3>
+      <p>Nagy esőzésnél a tartály felfogja a csapadék egy részét, így kevesebb folyik el a csatornába. Lakott területen ez sok hozzájárul a környezet védelméhez.</p>
+
+      <h2>A RENDSZER FELÉPÍTÉSE</h2>
+
+      <h3>1. Tetőszerkezet (gyűjtő felület)</h3>
+      <p>A tető anyaga és felülete határozza meg a víz tisztaságát. Cserép és fémlemez tető tiszta vizet ad. Aszfaltos vagy zsindelyes tető szennyezőbb (bitumen kerülhet a vízbe).</p>
+
+      <h3>2. Csatorna és lefolyó</h3>
+      <p>A tető vizét gyűjtő rendszer – a már meglévő ereszcsatorna. Ide kell az első szűrő.</p>
+
+      <h3>3. Tetőcsatorna-szűrő (durva szűrés)</h3>
+      <p>A levelek, ágak, madártollak kiszűrése. Egyszerű hálós szűrő, könnyen tisztítható.</p>
+
+      <h3>4. Első csepp leválasztó</h3>
+      <p>A tető tetejéről induló első esőcsepp viszi le a port és a szennyezést. Egy <strong>első csepp leválasztó</strong> automatikusan elirányítja az első 5-15 liter vizet a tartály elkerülésével (csatornába).</p>
+
+      <h3>5. Tárolótartály</h3>
+      <p>A rendszer szíve. Méretezés:</p>
+      <ul>
+        <li><strong>Csak kerti öntözésre</strong>: 3-5 m³ elegendő (egyhetes pihenő-időszakot átvészelő)</li>
+        <li><strong>Kert + WC + mosógép</strong>: 6-10 m³</li>
+        <li><strong>Teljes alternatív rendszer</strong>: 10-15 m³</li>
+      </ul>
+      <p>Elhelyezés:</p>
+      <ul>
+        <li><strong>Felszíni</strong> (műanyag tartály): olcsó, könnyű telepítés, de a UV-sugárzás miatt mossálás kell, télen le kell üríteni</li>
+        <li><strong>Földbe ásott</strong> (beton vagy műanyag): drágább, de fagyásmentes, esztétikailag is jobb (nincs látható tartály)</li>
+      </ul>
+
+      <h3>6. Túlfolyó</h3>
+      <p>Ha a tartály megtelt, a felesleges víz a csatornába folyhat. <strong>Nélkülözhetetlen</strong> – nélküle a túltöltött tartály problémát okoz.</p>
+
+      <h3>7. Szivattyú</h3>
+      <p>Az esővíz felhasználáshoz nyomás kell. Modern rendszerekben <strong>frekvenciaváltós, nyomásfüggő szivattyú</strong>: csak akkor jár, ha vesz a rendszer vizet, és pont a megfelelő nyomást tartja.</p>
+
+      <h3>8. Finom szűrés (házi használathoz)</h3>
+      <p>Ha WC-be, mosógépbe használja, néhány lépcsős szűrés ajánlott: durva → finom → UV sterilizáló. Az utolsó megelőzi a baktériumok elszaporodását.</p>
+
+      <h3>9. Külön vezeték</h3>
+      <p>Az esővíz rendszer <strong>külön vezetékhálózaton</strong> jár – nem szabad keverni az ivóvízzel! Ezt jogszabályosan is külön kell jelölni a csöveken.</p>
+
+      <h3>10. Automatikus átkapcsolás</h3>
+      <p>Ha az esővíztartály kiürül, a rendszer automatikusan átvált a városi vízhálózatra. Soha nem marad WC nélkül.</p>
+
+      <h2>MIRE HASZNÁLHATÓ AZ ESŐVÍZ?</h2>
+
+      <h3>Kerti öntözés</h3>
+      <p>Legegyszerűbb és legtöbbet megtakarító alkalmazás. Nincs szükség finom szűrésre, csak a durva szennyezésekre.</p>
+
+      <h3>WC öblítés</h3>
+      <p>Egy 4 fős család évi 25-30 m³ vizet öblít WC-be – ez tisztán esővízből is megoldható. Plusz szűrés szükséges.</p>
+
+      <h3>Mosógép</h3>
+      <p>Plusz szűréssel és UV sterilizálással. A lágy víz előnye: <strong>30-40%-kal kevesebb mosószer</strong> ugyanahhoz a hatáshoz.</p>
+
+      <h3>Autómosás</h3>
+      <p>Lágy víz: nincs vízkő-folt a kocsin. Egyszerű szűrés elég.</p>
+
+      <h3>Medence-feltöltés</h3>
+      <p>Részleges feltöltés, vagy pótlás. Kémiai kezelés szükséges, de jó kiindulópont.</p>
+
+      <h2>NEM HASZNÁLHATÓ</h2>
+      <ul>
+        <li><strong>Ivóvíz</strong> – még jól szűrve sem szabad inni!</li>
+        <li><strong>Mosogatás</strong> – ott a higiéniás követelmény magas</li>
+        <li><strong>Fürdés/zuhanyzás</strong> – baktériumkockázat</li>
+      </ul>
+
+      <h2>MEGTÉRÜLÉS</h2>
+      <p>Egy átlagos kecskeméti komplett rendszer (8-10 m³ tartály, szivattyú, két felhasználási irány) megtérülése:</p>
+      <ul>
+        <li>Csak vízdíj-megtakarításból: 8-12 év</li>
+        <li>Új építkezésnél (alapba beépítve): 5-7 év</li>
+        <li>Növelt vízdíj-emelkedés esetén: gyorsabb</li>
+      </ul>
+
+      <div class="article-callout"><strong>Új építkezés tipp:</strong> Tartályt a ház alapjába beépíteni sokkal olcsóbb, mint utólag kiásni a kertet. Ha gondolkodik új építésen Kecskeméten vagy környékén, érdemes ezt a tervezésnél átbeszélni – akár 200-300 ezer Ft megtakarítás.</div>
+
+      <h2>KARBANTARTÁS</h2>
+      <p>Az esővízgyűjtő rendszer <strong>évente egyszeri ellenőrzést</strong> igényel:</p>
+      <ul>
+        <li>Csatorna és tetőszűrő tisztítása</li>
+        <li>Első csepp leválasztó kiürítése</li>
+        <li>Tartály ellenőrzése (üledék, baktériumok)</li>
+        <li>Szivattyú és szelepek vizsgálata</li>
+        <li>Szűrők cseréje (1-3 évente)</li>
+      </ul>
+
+      <p>Esővízgyűjtő rendszert tervez Kecskeméten, Lajosmizsén vagy a környéken? <strong>Ingyenes tervezés és helyszíni felmérés.</strong> Hívjon, beszéljük át az ön igényeit – minden ház más, ezért minden rendszer egyedi.</p>
+    `
+  }
+];
+
+let currentFilter = 'mind';
+
+function renderGrid(){
+  const grid = document.getElementById('blog-grid');
+  const filtered = currentFilter === 'mind' ? POSTS.slice(1) : POSTS.slice(1).filter(p => p.cat === currentFilter);
+  grid.innerHTML = filtered.map((p,i) => {
+    const idx = POSTS.indexOf(p);
+    return `<div class="blog-card" onclick="openPost(${idx})">
+      <div class="bc-img">
+        ${iconBox(p.cat)}
+        <div class="bc-cat">${p.cat}</div>
+      </div>
+      <div class="bc-body">
+        <div class="bc-title">${p.title}</div>
+        <div class="bc-excerpt">${p.excerpt}</div>
+        <div class="bc-meta"><span>📅 ${p.date}</span><span class="bc-read">⏱ ${p.read} →</span></div>
+      </div>
+    </div>`;
+  }).join('');
+  // re-observe
+  document.querySelectorAll('.blog-card').forEach((el,i) => {
+    el.style.opacity='0'; el.style.transform='translateY(20px)';
+    setTimeout(()=>{ el.style.transition='opacity .4s ease, transform .4s ease'; el.style.opacity='1'; el.style.transform='translateY(0)'; }, i*60);
+  });
+}
+
+function filterPosts(cat){
+  currentFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.textContent.trim() === (cat === 'mind' ? 'Mind' : cat)));
+  const fp = document.getElementById('featured');
+  fp.style.display = (cat === 'mind' || POSTS[0].cat === cat) ? '' : 'none';
+  renderGrid();
+}
+
+function openPost(idx){
+  const p = POSTS[idx];
+  document.getElementById('a-cat').textContent = p.cat;
+  document.getElementById('a-title').textContent = p.title;
+  document.getElementById('a-meta').innerHTML = `<span>📅 ${p.date}</span><span>⏱ ${p.read} olvasás</span><span>🏷 ${p.cat}</span>`;
+  document.getElementById('a-img-container').innerHTML = iconBox(p.cat);
+  document.getElementById('a-body').innerHTML = p.body;
+  document.getElementById('blog-list').style.display = 'none';
+  document.getElementById('blog-article').style.display = 'block';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function closePost(){
+  document.getElementById('blog-list').style.display = 'block';
+  document.getElementById('blog-article').style.display = 'none';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// Hamburger
+const hbtn = document.querySelector('.hamburger');
+const hmenu = document.getElementById('mob-menu');
+hbtn.addEventListener('click', () => {
+  hmenu.classList.toggle('open');
+  const s = hbtn.querySelectorAll('span');
+  hmenu.classList.contains('open')
+    ? (s[0].style.transform='rotate(45deg) translate(5px,5px)', s[1].style.opacity='0', s[2].style.transform='rotate(-45deg) translate(5px,-5px)')
+    : (s[0].style.transform='', s[1].style.opacity='', s[2].style.transform='');
+});
+
+// Reveal
+const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('visible'); io.unobserve(x.target); } }), {threshold:.1});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Featured post icon
+document.getElementById('fp-img-container').insertAdjacentHTML('afterbegin', iconBox(POSTS[0].cat));
+
+// Init
+renderGrid();
+</script>
+<a href="tel:+36202210555" class="float-call" aria-label="Hívás: +36 20 221 0555">
+  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 13.4a19.79 19.79 0 01-3.07-8.67A2 2 0 013.62 2.5h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8 9.91a16 16 0 006 6l.87-.87a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+  <span class="float-call-txt">+36 20 221 0555</span>
+</a>
+<style>
+.float-call{position:fixed;right:18px;bottom:18px;z-index:9999;display:flex;align-items:center;gap:.55rem;background:#1a5fa8;color:#fff;text-decoration:none;padding:.75rem 1.1rem;border-radius:50px;font-weight:600;font-size:.92rem;box-shadow:0 6px 22px rgba(13,58,120,.35),0 2px 6px rgba(0,0,0,.18);transition:background .2s,transform .2s}
+.float-call:hover{background:#2d7dd2;transform:translateY(-2px)}
+@media(max-width:600px){.float-call{padding:.85rem;border-radius:50%}.float-call-txt{display:none}}
+</style>
+</body>
+</html>

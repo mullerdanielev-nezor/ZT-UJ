@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Szolgáltatások – ZT Épületgépészet | Kecskemét</title>
+<meta name="description" content="Vízszerelés, fűtésszerelés, gázszerelés és klímaszerelés Kecskeméten és országosan. Részletes szolgáltatáslista, árak, GYIK – ZT Épületgépészet.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #f2f4f8; --bg2: #e8ecf3; --surface: #fff;
+  --blue: #1a5fa8; --blue-l: #2d7dd2; --red: #cc1f1f;
+  --text: #18243a; --muted: #5a6b82;
+  --border: rgba(26,95,168,0.14); --shadow: 0 2px 20px rgba(26,60,120,0.08);
+  --fh: 'Bebas Neue', sans-serif; --fb: 'Outfit', sans-serif;
+}
+html { scroll-behavior: smooth; scroll-padding-top: 104px; overflow-y: scroll; }
+body { background: var(--bg); color: var(--text); font-family: var(--fb); overflow-x: hidden; line-height: 1.6; }
+body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle, rgba(26,95,168,0.05) 1px, transparent 1px); background-size: 28px 28px; pointer-events: none; z-index: 0; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 104px; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; background: rgba(242,244,248,0.93); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+.nav-logo img { height: 88px; width: 88px; object-fit: contain; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: .83rem; font-weight: 500; letter-spacing: .05em; text-transform: uppercase; transition: color .2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--text); }
+.nav-links a.active { color: var(--blue); border-bottom: 2px solid var(--blue); padding-bottom: 2px; }
+.nav-cta { background: var(--blue) !important; color: #fff !important; padding: .45rem 1.2rem; border-radius: 4px; border-bottom: none !important; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all .3s; }
+.mobile-menu { display: none; position: fixed; top: 104px; left: 0; right: 0; z-index: 99; background: rgba(242,244,248,0.98); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); flex-direction: column; padding: 1.5rem 5%; gap: 1rem; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { color: var(--text); text-decoration: none; font-size: 1rem; font-weight: 500; padding: .5rem 0; border-bottom: 1px solid var(--border); }
+.mob-cta { background: var(--blue); color: #fff !important; text-align: center; padding: .75rem !important; border-radius: 5px; border-bottom: none !important; font-weight: 600; }
+
+/* BUTTONS */
+.btn-p { display: inline-flex; align-items: center; gap: .5rem; background: var(--blue); color: #fff; text-decoration: none; padding: .82rem 1.8rem; font-family: var(--fb); font-size: .9rem; font-weight: 600; border-radius: 5px; border: none; cursor: pointer; transition: background .2s, transform .2s; }
+.btn-p:hover { background: var(--blue-l); transform: translateY(-2px); }
+.btn-s { display: inline-flex; align-items: center; gap: .5rem; background: transparent; color: var(--text); text-decoration: none; padding: .82rem 1.8rem; font-family: var(--fb); font-size: .9rem; font-weight: 500; border: 1.5px solid var(--border); border-radius: 5px; transition: border-color .2s, background .2s; }
+.btn-s:hover { border-color: var(--blue); background: rgba(26,95,168,.06); }
+
+/* LABELS */
+.lbl { font-size: .7rem; text-transform: uppercase; letter-spacing: .15em; color: var(--blue); display: flex; align-items: center; gap: .5rem; margin-bottom: .6rem; }
+.lbl::before { content: ''; width: 22px; height: 1.5px; background: var(--blue); }
+h2.sec-title { font-family: var(--fh); font-size: clamp(2.2rem,4vw,3.8rem); letter-spacing: 2px; line-height: 1; }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── PAGE HERO ─── */
+.page-hero {
+  position: relative; z-index: 1;
+  padding: 140px 5% 80px; overflow: hidden;
+  background: linear-gradient(135deg, var(--bg2) 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--border);
+}
+.page-hero::after { content: ''; position: absolute; top: -80px; right: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(45,125,210,0.1) 0%, transparent 70%); pointer-events: none; }
+.page-hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+.ph-media { display: flex; justify-content: center; align-items: center; }
+.call-phone { width: 280px; aspect-ratio: 9/19; background: #0d0d14; border-radius: 42px; padding: 14px 10px; box-shadow: 0 0 0 2px #1f2540, 0 26px 60px rgba(13,20,40,.28), inset 0 0 0 1px rgba(255,255,255,.06); position: relative; }
+.call-phone::before { content: ''; position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 90px; height: 22px; background: #0d0d14; border-radius: 14px; z-index: 3; }
+.call-phone-btn-r { position: absolute; right: -3px; top: 110px; width: 3px; height: 50px; background: #1f2540; border-radius: 0 2px 2px 0; }
+.call-phone-vol1 { position: absolute; left: -3px; top: 95px; width: 3px; height: 32px; background: #1f2540; border-radius: 2px 0 0 2px; }
+.call-phone-vol2 { position: absolute; left: -3px; top: 140px; width: 3px; height: 32px; background: #1f2540; border-radius: 2px 0 0 2px; }
+.call-screen { width: 100%; height: 100%; border-radius: 30px; overflow: hidden; background: linear-gradient(180deg, #1a2640 0%, #0f1626 100%); display: flex; flex-direction: column; align-items: center; position: relative; padding: 2.6rem 1rem 1.4rem; color: #fff; }
+.call-status { font-size: .68rem; opacity: .65; letter-spacing: .04em; margin-bottom: .25rem; animation: callPulse 1.6s ease-in-out infinite; }
+@keyframes callPulse { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+.call-name { font-family: var(--fh); font-size: 1.5rem; letter-spacing: 1px; margin-bottom: .25rem; }
+.call-num { font-size: .82rem; opacity: .8; letter-spacing: .03em; margin-bottom: 1.4rem; }
+.call-avatar { width: 96px; height: 96px; border-radius: 50%; background: linear-gradient(135deg, #1a5fa8, #2d7dd2); display: flex; align-items: center; justify-content: center; font-family: var(--fh); font-size: 2.2rem; color: #fff; letter-spacing: 2px; margin-bottom: 1.4rem; box-shadow: 0 0 0 6px rgba(26,95,168,.18), 0 0 0 14px rgba(26,95,168,.08); animation: callRing 1.6s ease-in-out infinite; }
+@keyframes callRing { 0%,100% { box-shadow: 0 0 0 6px rgba(26,95,168,.18), 0 0 0 14px rgba(26,95,168,.08); } 50% { box-shadow: 0 0 0 10px rgba(26,95,168,.28), 0 0 0 22px rgba(26,95,168,.12); } }
+.call-actions { margin-top: auto; display: flex; gap: 2rem; align-items: center; }
+.call-btn { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; }
+.call-btn.decline { background: #e0354b; }
+.call-btn.accept { background: #2ec46c; animation: callPulse 1.6s ease-in-out infinite; }
+.call-btn svg { width: 26px; height: 26px; }
+@media(max-width:768px){ .page-hero-inner { grid-template-columns: 1fr; gap: 2rem; } .call-phone { width: 200px; } .call-name { font-size: 1.15rem; } .call-num { font-size: .72rem; margin-bottom: 1rem; } .call-avatar { width: 72px; height: 72px; font-size: 1.6rem; margin-bottom: 1rem; } .call-btn { width: 46px; height: 46px; } .call-btn svg { width: 22px; height: 22px; } }
+
+  /* TIKTOK PHONE */
+  .tiktok-phone { width: 200px; background: #0a0a0a; border-radius: 36px; padding: 12px 9px; box-shadow: 0 0 0 2px #1a1a2e, 0 20px 50px rgba(0,0,0,.2), inset 0 0 0 1px rgba(255,255,255,.06); position: relative; }
+  .tiktok-phone::before { content: ''; position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 42px; height: 4px; background: #1a1a2e; border-radius: 3px; z-index: 2; }
+  .tiktok-btn-r { position: absolute; right: -3px; top: 80px; width: 3px; height: 28px; background: #1a1a2e; border-radius: 0 2px 2px 0; }
+  .tiktok-vol1 { position: absolute; left: -3px; top: 68px; width: 3px; height: 20px; background: #1a1a2e; border-radius: 2px 0 0 2px; }
+  .tiktok-vol2 { position: absolute; left: -3px; top: 96px; width: 3px; height: 20px; background: #1a1a2e; border-radius: 2px 0 0 2px; }
+  .tiktok-screen { border-radius: 26px; overflow: hidden; aspect-ratio: 9/19; position: relative; background: #111; }
+  .tt-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.7) 0%, transparent 50%); display: flex; justify-content: space-between; align-items: flex-end; padding: .7rem; pointer-events: none; }
+  .tt-bottom { flex: 1; }
+  .tt-user { display: flex; align-items: center; gap: .45rem; margin-bottom: .4rem; }
+  .tt-avatar { width: 26px; height: 26px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; font-size: .5rem; font-weight: 700; color: #fff; border: 1.5px solid #fff; flex-shrink: 0; }
+  .tt-username { font-size: .58rem; font-weight: 700; color: #fff; }
+  .tt-caption { font-size: .5rem; color: rgba(255,255,255,.8); }
+  .tt-soundbar { background: rgba(255,255,255,.15); border-radius: 4px; height: 3px; width: 90%; margin-top: .35rem; }
+  .tt-soundbar-inner { width: 35%; height: 100%; background: #fff; border-radius: 4px; }
+  .tt-actions { display: flex; flex-direction: column; align-items: center; gap: .3rem; }
+  .tt-action { display: flex; flex-direction: column; align-items: center; gap: .08rem; }
+  .tt-action-icon { font-size: .9rem; }
+  .tt-action-lbl { font-size: .38rem; color: rgba(255,255,255,.8); }
+  .tt-disc { width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(135deg,#333,#666); border: 2px solid rgba(255,255,255,.3); display: flex; align-items: center; justify-content: center; font-size: .55rem; animation: spin 3s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .tt-placeholder { position: absolute; inset: 0; background: linear-gradient(160deg,#1a2a4a,#0d1117); display: flex; flex-direction: column; align-items: center; justify-content: center; color: rgba(255,255,255,.5); font-family: var(--fb); }
+.breadcrumb { font-size: .75rem; color: var(--muted); margin-bottom: 1rem; display: flex; align-items: center; gap: .4rem; }
+.breadcrumb a { color: var(--blue); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+h1.page-title { font-family: var(--fh); font-size: clamp(3rem, 6vw, 5.5rem); line-height: .95; letter-spacing: 2px; margin-bottom: 1.2rem; }
+h1.page-title span { color: var(--blue); }
+.page-hero-desc { color: var(--muted); font-size: 1rem; max-width: 460px; margin-bottom: 2rem; }
+.hero-pills { display: flex; flex-wrap: wrap; gap: .6rem; }
+.pill { display: inline-flex; align-items: center; gap: .4rem; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: .35rem .9rem; font-size: .78rem; font-weight: 500; color: var(--text); }
+.pill svg { color: var(--blue); }
+
+/* stat boxes */
+.hero-stats-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }
+.hstat { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.4rem; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+.hstat::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--red)); }
+.hstat-num { font-family: var(--fh); font-size: 2.8rem; letter-spacing: 1px; color: var(--text); line-height: 1; }
+.hstat-num span { color: var(--blue); }
+.hstat-lbl { font-size: .78rem; color: var(--muted); margin-top: .2rem; }
+
+/* ─── SERVICE TABS ─── */
+.svc-section { padding: 7rem 5%; position: relative; z-index: 1; }
+.svc-section-inner { max-width: 1200px; margin: 0 auto; }
+
+/* sticky sidebar tabs */
+.svc-layout { display: grid; grid-template-columns: 260px 1fr; gap: 3rem; align-items: start; }
+.svc-tabs { position: sticky; top: 90px; }
+.svc-tab-btn {
+  width: 100%; text-align: left; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 1rem 1.2rem; margin-bottom: .6rem;
+  cursor: pointer; display: flex; align-items: center; gap: 1rem;
+  transition: border-color .2s, background .2s, box-shadow .2s;
+  font-family: var(--fb);
+}
+.svc-tab-btn:hover { border-color: var(--blue); background: rgba(26,95,168,.04); }
+.svc-tab-btn.active { border-color: var(--blue); background: rgba(26,95,168,.07); box-shadow: 0 4px 16px rgba(26,95,168,.12); }
+.tab-icon-wrap { width: 40px; height: 40px; border-radius: 50%; padding: 2.5px; background: linear-gradient(135deg, var(--blue), var(--red)); box-shadow: 0 0 8px rgba(26,95,168,.35), 0 0 16px rgba(204,31,31,.2); flex-shrink: 0; }
+.tab-icon-wrap img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; background: var(--surface); display: block; }
+.tab-label { font-size: .88rem; font-weight: 600; color: var(--text); }
+.tab-sub { font-size: .72rem; color: var(--muted); }
+.tab-arrow { margin-left: auto; color: var(--blue); opacity: 0; transition: opacity .2s; }
+.svc-tab-btn.active .tab-arrow { opacity: 1; }
+
+/* content panels */
+.svc-panel { display: none; }
+.svc-panel.active { display: block; }
+
+.panel-hero { border-radius: 12px; overflow: hidden; position: relative; margin-bottom: 2rem; }
+.panel-hero img { width: 100%; height: 340px; object-fit: cover; display: block; }
+.panel-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(18,28,58,.75) 0%, transparent 60%); display: flex; align-items: flex-end; padding: 2rem; }
+.panel-hero-tag { background: var(--red); color: #fff; font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .3rem .8rem; border-radius: 3px; }
+.panel-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; margin-bottom: 2rem; }
+.panel-gallery .g-item { position: relative; border-radius: 12px; overflow: hidden; background: #e6ebf2; aspect-ratio: 4/3; }
+.panel-gallery .g-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.panel-gallery .panel-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(18,28,58,.75) 0%, transparent 60%); display: flex; align-items: flex-end; padding: 1.2rem; }
+@media(max-width:768px){ .panel-gallery { grid-template-columns: 1fr; } }
+
+.panel-content { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+.panel-desc { font-size: .95rem; color: var(--muted); line-height: 1.75; }
+.panel-desc strong { color: var(--text); }
+.panel-desc p + p { margin-top: .9rem; }
+
+/* checklist */
+.checklist { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+.checklist li { display: flex; align-items: flex-start; gap: .7rem; font-size: .88rem; }
+.check-dot { width: 20px; height: 20px; border-radius: 50%; background: rgba(26,95,168,.1); border: 1.5px solid var(--blue); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.check-dot svg { color: var(--blue); }
+
+/* process steps */
+.process { margin: 2.5rem 0; }
+.process-title { font-family: var(--fh); font-size: 1.4rem; letter-spacing: 1px; margin-bottom: 1.2rem; }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.step { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.3rem; position: relative; }
+.step::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--red)); border-radius: 10px 10px 0 0; }
+.step-num { font-family: var(--fh); font-size: 2rem; color: rgba(26,95,168,.15); letter-spacing: 1px; margin-bottom: .3rem; }
+.step-name { font-weight: 600; font-size: .88rem; margin-bottom: .3rem; }
+.step-desc { font-size: .78rem; color: var(--muted); line-height: 1.5; }
+
+/* price card */
+.price-card { background: var(--blue); color: #fff; border-radius: 10px; padding: 1.8rem; margin-top: 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+.price-text .price-from { font-size: .72rem; opacity: .75; text-transform: uppercase; letter-spacing: .08em; }
+.price-text .price-val { font-family: var(--fh); font-size: 2.2rem; letter-spacing: 1px; line-height: 1; }
+.price-text .price-note { font-size: .78rem; opacity: .75; margin-top: .2rem; }
+.price-free { background: rgba(255,255,255,.15); border-radius: 6px; padding: .5rem 1rem; font-size: .8rem; font-weight: 600; }
+
+/* FAQ */
+.faq-section { padding: 6rem 5%; background: var(--surface); position: relative; z-index: 1; }
+.faq-inner { max-width: 900px; margin: 0 auto; }
+.faq-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: .6rem; }
+.faq-item { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.faq-q { width: 100%; text-align: left; background: none; border: none; padding: 1.1rem 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-family: var(--fb); font-size: .93rem; font-weight: 600; color: var(--text); }
+.faq-q svg { flex-shrink: 0; transition: transform .3s; color: var(--blue); }
+.faq-item.open .faq-q svg { transform: rotate(180deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+.faq-a-inner { padding: 0 1.4rem 1.1rem; font-size: .88rem; color: var(--muted); line-height: 1.7; }
+.faq-item.open .faq-a { max-height: 200px; }
+
+/* AREA MAP */
+.area-section { padding: 6rem 5%; position: relative; z-index: 1; }
+.radar-core { position: relative; z-index: 5; width: 56px; height: 56px; border-radius: 50%; background: var(--blue); display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(26,95,168,.45); }
+.radar-core .radar-label { position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%); font-size: .75rem; font-weight: 600; color: var(--text); letter-spacing: .04em; white-space: nowrap; }
+.radar-ring { position: absolute; top: 50%; left: 50%; border-radius: 50%; border: 2px solid var(--blue); opacity: 0; transform: translate(-50%,-50%); animation: radarPulse 3s ease-out infinite; }
+.radar-ring.r1 { animation-delay: 0s; }
+.radar-ring.r2 { animation-delay: 1s; }
+.radar-ring.r3 { animation-delay: 2s; }
+@keyframes radarPulse { 0% { width: 56px; height: 56px; opacity: .7; border-width: 2px; } 100% { width: 480px; height: 480px; opacity: 0; border-width: 1px; } }
+.area-inner { max-width: 1200px; margin: 0 auto; }
+.area-grid { margin-top: 2.5rem; display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; }
+.area-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.1rem; display: flex; align-items: center; gap: .75rem; transition: border-color .2s; }
+.area-card:hover { border-color: var(--blue); }
+.area-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
+.area-name { font-size: .88rem; font-weight: 500; }
+.area-dist { font-size: .72rem; color: var(--muted); }
+.area-free { font-size: .65rem; background: rgba(26,95,168,.1); color: var(--blue); padding: .15rem .5rem; border-radius: 10px; font-weight: 600; margin-left: auto; }
+
+/* CTA */
+.cta-bottom { padding: 6rem 5%; background: var(--bg2); border-top: 1px solid var(--border); position: relative; z-index: 1; }
+.cta-bottom-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+.cta-b-title { font-family: var(--fh); font-size: clamp(2rem,3.5vw,3.2rem); letter-spacing: 2px; line-height: 1.05; margin-bottom: 1rem; }
+.cta-b-title span { color: var(--blue); }
+.cta-b-form { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 2rem; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+.cta-b-form::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--red)); }
+.fgrp { margin-bottom: .85rem; }
+.fgrp label { display: block; font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: .3rem; }
+.fgrp input, .fgrp select, .fgrp textarea { width: 100%; background: var(--bg); border: 1.5px solid var(--border); border-radius: 5px; padding: .65rem 1rem; color: var(--text); font-family: var(--fb); font-size: .9rem; outline: none; transition: border-color .2s; resize: vertical; }
+.fgrp input:focus, .fgrp select:focus, .fgrp textarea:focus { border-color: var(--blue); }
+.fgrp textarea { min-height: 80px; }
+.frow2 { display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; }
+.fsub { width: 100%; padding: .85rem; background: var(--blue); color: #fff; border: none; border-radius: 5px; font-family: var(--fb); font-size: .92rem; font-weight: 600; cursor: pointer; transition: background .2s; margin-top: .4rem; }
+.fsub:hover { background: var(--blue-l); }
+
+/* FOOTER */
+footer { padding: 2.5rem 5%; background: var(--bg2); border-top: 1px solid var(--border); position: relative; z-index: 1; }
+.foot-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.foot-copy { font-size: .78rem; color: var(--muted); }
+.foot-links { display: flex; gap: 1.5rem; }
+.foot-links a { font-size: .78rem; color: var(--muted); text-decoration: none; transition: color .2s; }
+.foot-links a:hover { color: var(--text); }
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .page-hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .svc-layout { grid-template-columns: 1fr; }
+  .svc-tabs { position: static; display: grid; grid-template-columns: repeat(2,1fr); gap: .5rem; }
+  .svc-tab-btn { margin-bottom: 0; }
+  .tab-sub { display: none; }
+  .steps { grid-template-columns: repeat(2,1fr); }
+  .area-grid { grid-template-columns: repeat(2,1fr); }
+  .cta-bottom-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+@media(max-width:768px){
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .panel-content { grid-template-columns: 1fr; }
+  .hero-stats-grid { grid-template-columns: repeat(2,1fr); }
+  .frow2 { grid-template-columns: 1fr; }
+  .foot-inner { flex-direction: column; text-align: center; }
+  .foot-links { justify-content: center; }
+}
+@media(max-width:500px){
+  .svc-tabs { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .area-grid { grid-template-columns: 1fr 1fr; }
+  .hero-pills { gap: .4rem; }
+}
+</style>
+</head>
+<body>
+
+<div id="zt-loader"><img src="assets/image.png" alt="ZT"></div>
+<style>#zt-loader{position:fixed;inset:0;z-index:9999;background:#f2f4f8;display:flex;align-items:center;justify-content:center;transition:opacity .35s ease}#zt-loader img{width:140px;height:140px;animation:ztPulse 1.1s ease-in-out infinite}@keyframes ztPulse{0%,100%{opacity:.45;transform:scale(.95)}50%{opacity:1;transform:scale(1.05)}}#zt-loader.hide{opacity:0;pointer-events:none}</style>
+<script>window.addEventListener('load',function(){setTimeout(function(){document.getElementById('zt-loader').classList.add('hide')},250);setTimeout(function(){var l=document.getElementById('zt-loader');if(l)l.remove()},700)});</script>
+
+<nav>
+  <a href="ztepuletgepeszet-home%20(2).html" class="nav-logo">
+    <img src="assets/image.png" alt="ZT Épületgépészet">
+  </a>
+  <ul class="nav-links">
+    <li><a href="ztepuletgepeszet-home%20(2).html">Főoldal</a></li>
+    <li><a href="#" class="active">Szolgáltatások</a></li>
+    <li><a href="referencia.html">Referenciák</a></li>
+    <li><a href="ztepuletgepeszet-blog.html">Blog</a></li>
+    <li><a href="ztepuletgepeszet-home%20(2).html#contact" class="nav-cta">Ajánlatot kérek</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menü"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mob-menu">
+  <a href="ztepuletgepeszet-home%20(2).html">Főoldal</a>
+  <a href="#">Szolgáltatások</a>
+  <a href="referencia.html">Referenciák</a>
+  <a href="ztepuletgepeszet-blog.html">Blog</a>
+  <a href="ztepuletgepeszet-home%20(2).html#contact" class="mob-cta">Ajánlatot kérek</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="ph-text">
+      <div class="breadcrumb">
+        <a href="ztepuletgepeszet-home%20(2).html">Főoldal</a>
+        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        Szolgáltatások
+      </div>
+      <div class="lbl">Szakterületek</div>
+      <h1 class="page-title">SZOLGÁLTATÁSAIM</h1>
+      <p class="page-hero-desc">Fűtés, klíma, víz és gáz – minden épületgépészeti feladatot elvállalok, tervezéstől az átadásig. Kecskeméten ingyenes helyszíni felmérés.</p>
+      <div class="hero-pills">
+        <div class="pill"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Ingyenes felmérés</div>
+        <div class="pill"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Garanciális munkák</div>
+        <div class="pill"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Országos vállalás</div>
+        <div class="pill"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Engedéllyel</div>
+      </div>
+      <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="#services" class="btn-p">Szolgáltatások →</a>
+        <a href="ztepuletgepeszet-home%20(2).html#contact" class="btn-s">Ajánlatot kérek</a>
+      </div>
+    </div>
+    <div class="ph-media">
+      <div class="call-phone">
+        <div class="call-phone-btn-r"></div><div class="call-phone-vol1"></div><div class="call-phone-vol2"></div>
+        <div class="call-screen">
+          <div class="call-status">tárcsázás...</div>
+          <div class="call-name">ZT Épületgépészet</div>
+          <div class="call-num">+36 20 221 0555</div>
+          <div class="call-avatar">ZT</div>
+          <div class="call-actions">
+            <a href="tel:+36202210555" class="call-btn decline" style="animation:callPulse 1.6s ease-in-out infinite;"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 13.4a19.79 19.79 0 01-3.07-8.67A2 2 0 013.62 2.5h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8 9.91a16 16 0 006 6l.87-.87a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" transform="rotate(135 12 12)"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SERVICES -->
+<section class="svc-section" id="services">
+  <div class="svc-section-inner">
+    <div class="lbl reveal">Részletes leírás</div>
+    <h2 class="sec-title reveal" style="margin-bottom:3rem;">SZOLGÁLTATÁSAIM</h2>
+    <div class="svc-layout">
+
+      <!-- STICKY TABS -->
+      <div class="svc-tabs reveal">
+        <button class="svc-tab-btn active" onclick="showPanel(0)">
+          <div class="tab-icon-wrap"><img src="https://ztepuletgepeszet.hu/wp-content/uploads/2025/11/7.png" alt="Vízszerelés"></div>
+          <div><div class="tab-label">Vízszerelés</div><div class="tab-sub">Csőhálózat, saniter</div></div>
+          <svg class="tab-arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+        <button class="svc-tab-btn" onclick="showPanel(1)">
+          <div class="tab-icon-wrap"><img src="https://ztepuletgepeszet.hu/wp-content/uploads/2025/11/6.png" alt="Fűtésszerelés"></div>
+          <div><div class="tab-label">Fűtésszerelés</div><div class="tab-sub">Padlófűtés, hőszivattyú</div></div>
+          <svg class="tab-arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+        <button class="svc-tab-btn" onclick="showPanel(2)">
+          <div class="tab-icon-wrap"><img src="https://ztepuletgepeszet.hu/wp-content/uploads/2025/11/5.png" alt="Gázszerelés"></div>
+          <div><div class="tab-label">Gázszerelés</div><div class="tab-sub">Kazán, gázvezeték</div></div>
+          <svg class="tab-arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+        <button class="svc-tab-btn" onclick="showPanel(3)">
+          <div class="tab-icon-wrap"><img src="https://ztepuletgepeszet.hu/wp-content/uploads/2025/11/8.png" alt="Klímaszerelés"></div>
+          <div><div class="tab-label">Klímaszerelés</div><div class="tab-sub">Lakás, iroda, ipari</div></div>
+          <svg class="tab-arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+
+      <!-- CONTENT PANELS -->
+      <div>
+
+        <!-- VÍZSZERELÉS -->
+        <div class="svc-panel active" id="panel-0">
+          <div class="panel-gallery">
+            <div class="g-item"><img src="assets/ZT ref/Rezcsoves-vizvezetek-rendszer-epitese.jpeg" alt="Vízszerelés"></div>
+            <div class="g-item"><img src="assets/ZT ref/Szaniter-bekotes-es-beuzemeles.jpeg" alt="Szaniter bekötés"></div>
+            <div class="g-item"><img src="assets/ZT ref/Vizhalozat-szerelese-uj-epitesu-hazban.jpeg" alt="Vízhálózat"></div>
+          </div>
+          <div class="panel-content">
+            <div class="panel-desc">
+              <p>Teljes körű vízszerelési munkákat vállalok <strong>új építéstől</strong> felújításon át <strong>ipari hálózatok kialakításáig</strong>. Minden munkánál a hosszú távú megbízhatóság az elsődleges szempont.</p>
+              <p>Csőtörések és szivárgások gyors elhárítása mellett komplett <strong>fürdőszoba-felújításokat</strong> is elvállalok – a csempézéstől a szaniter berendezések felszereléséig.</p>
+            </div>
+            <ul class="checklist">
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Ivóvíz hálózat kiépítés és felújítás</li>
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Csőtörés javítás, szivárgás elhárítás</li>
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Mosdó, WC, zuhanyzó, fürdőkád szerelés</li>
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Ipari és kereskedelmi vízhálózat</li>
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Nyomáspróba és dokumentált átadás</li>
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Vízlágyító rendszerek telepítése</li>
+            </ul>
+          </div>
+          <div class="process">
+            <div class="process-title">A FOLYAMAT</div>
+            <div class="steps">
+              <div class="step"><div class="step-num">01</div><div class="step-name">Felmérés</div><div class="step-desc">Ingyenes helyszíni szemle, igényfelmérés</div></div>
+              <div class="step"><div class="step-num">02</div><div class="step-name">Ajánlat</div><div class="step-desc">Részletes, tételes árajánlat 48 órán belül</div></div>
+              <div class="step"><div class="step-num">03</div><div class="step-name">Kivitelezés</div><div class="step-desc">Precíz, tiszta munkavégzés, egyeztetett ütemben</div></div>
+              <div class="step"><div class="step-num">04</div><div class="step-name">Átadás</div><div class="step-desc">Nyomáspróba, dokumentáció, garanciavállalás</div></div>
+            </div>
+          </div>
+          <div class="price-card">
+            <div class="price-text">
+              <div class="price-from">Kiszállási díj</div>
+              <div class="price-val">Ingyenes</div>
+              <div class="price-note">Kecskeméten és 30 km-es körzetben</div>
+            </div>
+            <a href="#contact-form" class="btn-p" style="background:#fff;color:var(--blue);">Ajánlatot kérek →</a>
+          </div>
+        </div>
+
+        <!-- FŰTÉSSZERELÉS -->
+        <div class="svc-panel" id="panel-1">
+          <div class="panel-gallery">
+            <div class="g-item"><img src="assets/ZT ref/Modern-kondenzacios-kazan-falra-szerelve.jpeg" alt="Fűtésszerelés"></div>
+            <div class="g-item"><img src="assets/ZT ref/Hoszivattyu-kulteri-egyseg-telepitve.jpeg" alt="Hőszivattyú"></div>
+            <div class="g-item"><img src="assets/ZT ref/Padlofutes-csovek-telepitese-betonozas-elott.jpeg" alt="Padlófűtés"></div>
+          </div>
+          <div class="panel-content">
+            <div class="panel-desc">
+              <p>Korszerű, <strong>energiahatékony fűtési rendszereket</strong> tervezek és szerelok – lakóházaktól ipari létesítményekig. Célom a minél alacsonyabb rezsiköltség hosszú távon.</p>
+              <p>Padlófűtés, radiátoros rendszerek, hőszivattyús megoldások és komplett <strong>kazánház-építés</strong> egyaránt a szakterületem.</p>
+            </div>
+            <ul class="checklist">
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Padlófűtés tervezés és kivitelezés</li>
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Radiátoros fűtési rendszer kiépítés</li>
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Hőszivattyú telepítés és beüzemelés</li>
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Kazáncsere, korszerűsítés</li>
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Kazánház tervezés és építés</li>
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Éves karbantartás, szerviz</li>
+            </ul>
+          </div>
+          <div class="process">
+            <div class="process-title">A FOLYAMAT</div>
+            <div class="steps">
+              <div class="step"><div class="step-num">01</div><div class="step-name">Felmérés</div><div class="step-desc">Épület hőtechnikai igényeinek felmérése</div></div>
+              <div class="step"><div class="step-num">02</div><div class="step-name">Tervezés</div><div class="step-desc">Optimális rendszer kiválasztása, méretezés</div></div>
+              <div class="step"><div class="step-num">03</div><div class="step-name">Szerelés</div><div class="step-desc">Precíz kivitelezés, tiszta munkaterület</div></div>
+              <div class="step"><div class="step-num">04</div><div class="step-name">Átadás</div><div class="step-desc">Beüzemelés, beállítás, használati oktatás</div></div>
+            </div>
+          </div>
+          <div class="price-card">
+            <div class="price-text">
+              <div class="price-from">Kiszállási díj</div>
+              <div class="price-val">Ingyenes</div>
+              <div class="price-note">Kecskeméten és 30 km-es körzetben</div>
+            </div>
+            <a href="#contact-form" class="btn-p" style="background:#fff;color:var(--blue);">Ajánlatot kérek →</a>
+          </div>
+        </div>
+
+        <!-- GÁZSZERELÉS -->
+        <div class="svc-panel" id="panel-2">
+          <div class="panel-gallery">
+            <div class="g-item"><img src="assets/ZT ref/Gazkazan-beuzemelese-es-nyomasproba.jpeg" alt="Gázszerelés"></div>
+            <div class="g-item"><img src="assets/ZT ref/Gazvezetek-kiepites-es-nyomasproba.jpeg" alt="Gázvezeték"></div>
+            <div class="g-item"><img src="assets/ZT ref/Zt-epuletgepeszet-referencia-3.jpeg" alt="Gázkészülék"></div>
+          </div>
+          <div class="panel-content">
+            <div class="panel-desc">
+              <p>Gázszerelési munkákat kizárólag <strong>érvényes hatósági engedéllyel</strong>, a vonatkozó szabványok és előírások teljes körű betartásával végzek. Biztonság mindenekfelett.</p>
+              <p>Gázkészülékek telepítésétől a komplett gázvezeték-rendszerek kialakításáig minden feladatot elvállalok, <strong>dokumentációval és garanciával</strong>.</p>
+            </div>
+            <ul class="checklist">
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Gázkazán telepítés és csere</li>
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Gáztűzhely, gázos vízmelegítő szerelés</li>
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Gázvezeték kiépítés és átépítés</li>
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Tömörségvizsgálat, hatósági engedélyeztetés</li>
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Éves gázkazán karbantartás</li>
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Gázszivárgás elhárítás – sürgős esetben</li>
+            </ul>
+          </div>
+          <div class="process">
+            <div class="process-title">A FOLYAMAT</div>
+            <div class="steps">
+              <div class="step"><div class="step-num">01</div><div class="step-name">Felmérés</div><div class="step-desc">Helyszíni szemle, meglévő rendszer vizsgálata</div></div>
+              <div class="step"><div class="step-num">02</div><div class="step-name">Engedély</div><div class="step-desc">Szükséges hatósági engedélyek intézése</div></div>
+              <div class="step"><div class="step-num">03</div><div class="step-name">Kivitelezés</div><div class="step-desc">Előírás szerinti, biztonságos szerelés</div></div>
+              <div class="step"><div class="step-num">04</div><div class="step-name">Átadás</div><div class="step-desc">Tömörségvizsgálat, dokumentáció, garancia</div></div>
+            </div>
+          </div>
+          <div class="price-card">
+            <div class="price-text">
+              <div class="price-from">Kiszállási díj</div>
+              <div class="price-val">Ingyenes</div>
+              <div class="price-note">Kecskeméten és 30 km-es körzetben</div>
+            </div>
+            <div class="price-free">Engedéllyel, garanciával</div>
+            <a href="#contact-form" class="btn-p" style="background:#fff;color:var(--blue);">Ajánlatot kérek →</a>
+          </div>
+        </div>
+
+        <!-- KLÍMASZERELÉS -->
+        <div class="svc-panel" id="panel-3">
+          <div class="panel-gallery">
+            <div class="g-item"><img src="assets/ZT ref/Ipari-klimarendszer-csovezese.jpeg" alt="Klímaszerelés"></div>
+            <div class="g-item"><img src="assets/ZT ref/Zt-epuletgepeszet-referencia-2.jpeg" alt="Klíma kültéri egység"></div>
+            <div class="g-item"><img src="assets/ZT ref/Zt-epuletgepeszet-referencia-5.jpeg" alt="Klíma csővezeték"></div>
+          </div>
+          <div class="panel-content">
+            <div class="panel-desc">
+              <p>Lakossági és ipari klímarendszerek telepítése és karbantartása – kizárólag <strong>minőségi, energiatakarékos készülékekkel</strong>, a helyszín és az igények alapos felmérése után.</p>
+              <p>Nemcsak szerelést, hanem <strong>éves karbantartást</strong> is vállalok, hogy rendszere mindig optimálisan működjön.</p>
+            </div>
+            <ul class="checklist">
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Splitklíma telepítés – 1 vagy több beltéri</li>
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Multi-split rendszer tervezés és kivitelezés</li>
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Ipari, kereskedelmi légkondicionálás</li>
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Éves karbantartás, szűrőcsere</li>
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Hűtőközeg töltés, szivárgásvizsgálat</li>
+              <li><div class="check-dot"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Klímaszerelés cseréje és bővítése</li>
+            </ul>
+          </div>
+          <div class="process">
+            <div class="process-title">A FOLYAMAT</div>
+            <div class="steps">
+              <div class="step"><div class="step-num">01</div><div class="step-name">Felmérés</div><div class="step-desc">Helyiség méret, tájolás, igény felmérése</div></div>
+              <div class="step"><div class="step-num">02</div><div class="step-name">Eszköz</div><div class="step-desc">Megfelelő kapacitású készülék kiválasztása</div></div>
+              <div class="step"><div class="step-num">03</div><div class="step-name">Szerelés</div><div class="step-desc">Szakszerű, esztétikus, tiszta telepítés</div></div>
+              <div class="step"><div class="step-num">04</div><div class="step-name">Beüzemelés</div><div class="step-desc">Tesztelés, beállítás, kezelési oktatás</div></div>
+            </div>
+          </div>
+          <div class="price-card">
+            <div class="price-text">
+              <div class="price-from">Kiszállási díj</div>
+              <div class="price-val">Ingyenes</div>
+              <div class="price-note">Kecskeméten és 30 km-es körzetben</div>
+            </div>
+            <a href="#contact-form" class="btn-p" style="background:#fff;color:var(--blue);">Ajánlatot kérek →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="faq-inner">
+    <div class="reveal"><div class="lbl">Kérdések</div><h2 class="sec-title">GYIK</h2></div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Mennyi ideig tart egy átlagos klímaszerelés?
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Egy átlagos split klíma telepítése általában fél-egy munkanapot vesz igénybe, az előkészítéstől a beüzemelésig. Multi-split rendszereknél ez 1-2 nap lehet. A pontos időtartamot minden esetben a felmérés után tudom megadni.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Kell-e engedély a gázszerelési munkákhoz?
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Igen, gázszerelési munkákat Magyarországon kizárólag érvényes hatósági engedéllyel rendelkező szakember végezhet. Én rendelkezem az összes szükséges engedéllyel, és az átadáshoz szükséges tömörségvizsgálatot és dokumentációt is elvégzem.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Vállal-e munkát Kecskeméten kívül?
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Igen, nagyobb projekteknél Magyarország egész területén vállalok munkát. Kecskeméten és 30 km-es körzetében az ingyenes helyszíni felmérést biztosítom, azon túl a kiszállási díjat egyedileg számolom.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Milyen garanciát vállal a munkájára?
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Minden elvégzett munkámra garanciát vállalok. A garancia feltételei és időtartama az elvégzett munka jellegétől függ – erről az ajánlatban és az átadásnál részletesen tájékoztatom az ügyfeleket.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Milyen gyorsan tud kijönni sürgős esetben?
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Sürgős esetekben (pl. csőtörés, gázszivárgás) igyekszem a lehető leghamarabb reagálni. Kecskeméten és közvetlen közelében általában néhány órán belül ki tudok menni. Kérje bizalommal telefonon.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TERÜLETEK -->
+<section class="area-section" id="area">
+  <div class="area-inner" style="max-width:900px;text-align:center;">
+    <div class="reveal">
+      <div class="lbl" style="justify-content:center;">Vállalási terület</div>
+      <h2 class="sec-title" style="margin-bottom:1rem;">ORSZÁGOS LEFEDETTSÉG</h2>
+      <p style="color:var(--muted);font-size:.95rem;max-width:540px;margin:0 auto 3rem;">Székhelyem Kecskemét – nagyobb projekteknél azonban Magyarország egész területén vállalok munkát.</p>
+    </div>
+    <div class="reveal" style="position:relative;display:flex;justify-content:center;align-items:center;height:280px;">
+      <div class="radar-ring r1"></div>
+      <div class="radar-ring r2"></div>
+      <div class="radar-ring r3"></div>
+      <div class="radar-core">
+        <svg width="22" height="22" fill="#fff" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>
+        <div class="radar-label">Kecskemét</div>
+      </div>
+    </div>
+    <div class="reveal" style="display:flex;justify-content:center;gap:2rem;margin-top:2rem;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:.5rem;"><span style="width:10px;height:10px;border-radius:50%;background:var(--blue);"></span><span style="font-size:.88rem;color:var(--text);font-weight:500;">Kecskemét + 30 km – Ingyenes kiszállás</span></div>
+      <div style="display:flex;align-items:center;gap:.5rem;"><span style="width:10px;height:10px;border-radius:50%;background:var(--muted);"></span><span style="font-size:.88rem;color:var(--muted);">Egész Magyarország – egyedi megállapodás</span></div>
+    </div>
+  </div>
+</section>
+<!-- CTA + FORM -->
+<section class="cta-bottom" id="contact-form">
+  <div class="cta-bottom-inner">
+    <div class="reveal">
+      <div class="lbl">Kapcsolat</div>
+      <div class="cta-b-title">Kérjen <span>ingyenes</span><br>ajánlatot!</div>
+      <p style="color:var(--muted);font-size:.9rem;margin-bottom:1.5rem;">Töltse ki az űrlapot, és 24 órán belül felveszem Önnel a kapcsolatot a részletekkel.</p>
+      <div style="display:flex;flex-direction:column;gap:.9rem;">
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <div style="width:40px;height:40px;border-radius:8px;background:rgba(26,95,168,.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="17" height="17" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 13.4a19.79 19.79 0 01-3.07-8.67A2 2 0 013.62 2.5h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8 9.91a16 16 0 006 6l.87-.87a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div><div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);">Telefon</div><div style="font-size:.93rem;font-weight:500;">+36 20 221 0555</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:.75rem;">
+          <div style="width:40px;height:40px;border-radius:8px;background:rgba(26,95,168,.1);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="17" height="17" fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div><div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);">Email</div><div style="font-size:.93rem;font-weight:500;">ztepuletgepeszet@gmail.com</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="cta-b-form">
+        <div style="font-family:var(--fh);font-size:1.5rem;letter-spacing:1px;margin-bottom:1.3rem;">Ajánlatkérés</div>
+        <div class="frow2">
+          <div class="fgrp"><label>Neve *</label><input type="text" placeholder="Kovács Péter"></div>
+          <div class="fgrp"><label>Telefon *</label><input type="tel" placeholder="+36 XX XXX XXXX"></div>
+        </div>
+        <div class="fgrp"><label>Szolgáltatás *</label>
+          <select>
+            <option value="">Válasszon...</option>
+            <option>Vízszerelés</option>
+            <option>Fűtésszerelés</option>
+            <option>Gázszerelés</option>
+            <option>Klímaszerelés</option>
+            <option>Több szolgáltatás</option>
+          </select>
+        </div>
+        <div class="fgrp"><label>Leírás</label><textarea placeholder="Röviden írja le, mire lenne szüksége..."></textarea></div>
+        <button class="fsub" onclick="this.textContent='✓ Elküldve!';this.style.background='#1a8a4a';">Küldés →</button>
+        <p style="font-size:.68rem;color:var(--muted);margin-top:.6rem;text-align:center;">Adatait az adatvédelmi tájékoztató szerint kezeljük.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="foot-copy">© 2026 ZT Épületgépészet – Minden jog fenntartva.</div>
+    <div class="foot-links"><a href="#">Adatvédelem</a><a href="#">ÁSZF</a><a href="#">Impresszum</a></div>
+  </div>
+</footer>
+
+<script>
+  // Tabs
+  function showPanel(idx) {
+    document.querySelectorAll('.svc-panel').forEach((p,i) => p.classList.toggle('active', i===idx));
+    document.querySelectorAll('.svc-tab-btn').forEach((b,i) => b.classList.toggle('active', i===idx));
+  }
+  // FAQ
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if(!isOpen) item.classList.add('open');
+  }
+  // Hamburger
+  const hbtn = document.querySelector('.hamburger');
+  const hmenu = document.getElementById('mob-menu');
+  hbtn.addEventListener('click', () => {
+    hmenu.classList.toggle('open');
+    const s = hbtn.querySelectorAll('span');
+    hmenu.classList.contains('open')
+      ? (s[0].style.transform='rotate(45deg) translate(5px,5px)', s[1].style.opacity='0', s[2].style.transform='rotate(-45deg) translate(5px,-5px)')
+      : (s[0].style.transform='', s[1].style.opacity='', s[2].style.transform='');
+  });
+  hmenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => hmenu.classList.remove('open')));
+  // Reveal
+  const io = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('visible'); io.unobserve(x.target); } }), {threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // URL tab param
+  const params = new URLSearchParams(location.search);
+  const tab = params.get('tab');
+  if(tab !== null) showPanel(parseInt(tab));
+</script>
+<a href="tel:+36202210555" class="float-call" aria-label="Hívás: +36 20 221 0555">
+  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 13.4a19.79 19.79 0 01-3.07-8.67A2 2 0 013.62 2.5h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8 9.91a16 16 0 006 6l.87-.87a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+  <span class="float-call-txt">+36 20 221 0555</span>
+</a>
+<style>
+.float-call{position:fixed;right:18px;bottom:18px;z-index:9999;display:flex;align-items:center;gap:.55rem;background:#1a5fa8;color:#fff;text-decoration:none;padding:.75rem 1.1rem;border-radius:50px;font-weight:600;font-size:.92rem;box-shadow:0 6px 22px rgba(13,58,120,.35),0 2px 6px rgba(0,0,0,.18);transition:background .2s,transform .2s}
+.float-call:hover{background:#2d7dd2;transform:translateY(-2px)}
+@media(max-width:600px){.float-call{padding:.85rem;border-radius:50%}.float-call-txt{display:none}}
+</style>
+</body>
+</html>
